@@ -2,8 +2,11 @@ export type TraceEvent = {
   ph: "M" | "I" | "X";
   name: string;
   cat: string;
-  pid: number;
-  tid: number;
+  pid: number | string;
+  tid: number | string;
+  ts: number;
+  tts: number;
+  dur: number;
   args?: { name: string };
 } & (
   | {
@@ -19,9 +22,17 @@ export type TraceEvent = {
   | {
       name: "EvaluateScript";
       args: {
-        data: {
+        data?: {
           columnNumber: number;
           lineNumber: number;
+          url: string;
+        };
+      };
+    }
+  | {
+      name: "ScriptCompiled";
+      args: {
+        data: {
           url: string;
         };
       };
@@ -36,11 +47,39 @@ export type TraceEvent = {
         };
       };
     }
+  | {
+      name: "PaintImage";
+      args: {
+        data: {
+          url: string;
+          width: number;
+          height: number;
+        };
+      };
+    }
+  | {
+      name: "v8.run";
+      args: {
+        fileName: string;
+      };
+    }
   | { name: "MinorGC" }
   | { name: "MajorGC" }
   | { name: "UpdateLayoutTree" }
   | { name: "Layout" }
+  | { name: "Layerize" }
+  | { name: "domInteractive" }
+  | { name: "LocalFrameView::performLayout" }
   | { name: "TimerFire" }
+  | { name: "Paint" }
+  | { name: "PrePaint" }
+  | { name: "ParseAuthorStyleSheet" }
+  | { name: "navigationStart" }
+  | { name: "CpuProfiler::StartProfiling" }
+  | { name: "V8.DeoptimizeCode" }
+  | { name: "IntersectionObserverController::computeIntersections" }
+  | { name: "firstPaint" }
+  | { name: "firstContentfulPaint" }
   | {
       name: "FunctionCall";
       args: {
