@@ -102,6 +102,16 @@ export type TraceEvent = {
         };
       };
     }
+  | {
+      name: "HTMLParserScriptRunner::execute";
+      args: {
+        data: {
+          columnNumber: number;
+          lineNumber: number;
+          frame: string;
+        };
+      };
+    }
 );
 
 // {

@@ -4,15 +4,14 @@ import { diffTraces } from "./trace/diffTraces.ts";
 import { mergeTraces } from "./trace/mergeTraces.ts";
 import { adjustTrace } from "./trace/adjustTrace.ts";
 
+const beforeTracePath = "./example-traces/vanilla-aifc-off.json";
+const afterTracePath = "./example-traces/vanilla-aifc-on.json";
+
 function main() {
-  const traceBefore = JSON.parse(
-    fs.readFileSync("./example-traces/github-trace-1.json", "utf8"),
-  );
+  const traceBefore = JSON.parse(fs.readFileSync(beforeTracePath, "utf8"));
   const processedTraceBefore = processTrace(traceBefore.traceEvents);
 
-  const traceAfter = JSON.parse(
-    fs.readFileSync("./example-traces/github-trace-2.json", "utf8"),
-  );
+  const traceAfter = JSON.parse(fs.readFileSync(afterTracePath, "utf8"));
   const processedTraceAfter = processTrace(traceAfter.traceEvents);
 
   const [beforeEvents, afterEvents, beforeUniqueEvents, afterUniqueEvents] =

@@ -24,6 +24,11 @@ const ID_EVENTS = new Set([
   "firstMeaningfulPaint",
   "firstPaint",
   "navigationStart",
+  "Document::updateStyle",
+  "Document::recalcStyle",
+  "Document::rebuildLayoutTree",
+  "Document::UpdateStyleAndLayout",
+  "Blink.ForcedStyleAndLayout.UpdateTime",
 ]);
 
 export function getUniqueEventKey(event: TraceEvent) {
@@ -68,6 +73,16 @@ export function getUniqueEventKey(event: TraceEvent) {
 
   if (event.name === "PaintImage") {
     const tmp = `${event.name}|${event.args?.data?.url ?? ""}|${event.args.data.width}|${event.args.data.height}`;
+    return getHash(tmp);
+  }
+
+  if (event.name === "HTMLParserScriptRunner::execute") {
+    const tmp = [
+      event.name,
+      event.args.data.frame,
+      event.args.data.lineNumber,
+      event.args.data.columnNumber,
+    ].join("|");
     return getHash(tmp);
   }
 
