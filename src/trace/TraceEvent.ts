@@ -48,6 +48,16 @@ export type TraceEvent = {
       };
     }
   | {
+      name: "v8.compileModule";
+      args: {
+        data: {
+          columnNumber: number;
+          lineNumber: number;
+          url: string;
+        };
+      };
+    }
+  | {
       name: "PaintImage";
       args: {
         data: {

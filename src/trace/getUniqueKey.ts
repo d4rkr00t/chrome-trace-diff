@@ -3,6 +3,9 @@ import type { TraceEvent } from "./TraceEvent.ts";
 
 const ID_EVENTS = new Set([
   "CpuProfiler::StartProfiling",
+  "FireAnimationFrame",
+  "FireIdleCallback",
+  "InteractiveTime",
   "IntersectionObserverController::computeIntersections",
   "Layerize",
   "Layout",
@@ -14,15 +17,13 @@ const ID_EVENTS = new Set([
   "PrePaint",
   "UpdateLayoutTree",
   "V8.DeoptimizeCode",
+  "domComplete",
   "domInteractive",
-  "navigationStart",
   "firstContentfulPaint",
-  "firstPaint",
   "firstImagePaint",
   "firstMeaningfulPaint",
-  "InteractiveTime",
-  "FireAnimationFrame",
-  "domComplete",
+  "firstPaint",
+  "navigationStart",
 ]);
 
 export function getUniqueEventKey(event: TraceEvent) {
@@ -46,6 +47,11 @@ export function getUniqueEventKey(event: TraceEvent) {
   }
 
   if (event.name === "v8.compile") {
+    const tmp = `${event.name}|${event.args.data.url}`;
+    return getHash(tmp);
+  }
+
+  if (event.name === "v8.compileModule") {
     const tmp = `${event.name}|${event.args.data.url}`;
     return getHash(tmp);
   }

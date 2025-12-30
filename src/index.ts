@@ -6,12 +6,12 @@ import { adjustTrace } from "./trace/adjustTrace.ts";
 
 function main() {
   const traceBefore = JSON.parse(
-    fs.readFileSync("./example-traces/palette-trace-2.json", "utf8"),
+    fs.readFileSync("./example-traces/github-trace-1.json", "utf8"),
   );
   const processedTraceBefore = processTrace(traceBefore.traceEvents);
 
   const traceAfter = JSON.parse(
-    fs.readFileSync("./example-traces/palette-trace-3.json", "utf8"),
+    fs.readFileSync("./example-traces/github-trace-2.json", "utf8"),
   );
   const processedTraceAfter = processTrace(traceAfter.traceEvents);
 
