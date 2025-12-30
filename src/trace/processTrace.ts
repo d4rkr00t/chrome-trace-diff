@@ -181,13 +181,7 @@ const IGNORED_EVENT_NAMES = new Set([
 
 const MAIN_THREAD_NAME = "CrRendererMain";
 
-let UNIQUE_MAIN_THREAD_PID = 0;
-
-export function processTrace(
-  traceEvents: TraceEvent[],
-  processPostfix: string,
-): ProcessedTrace {
-  UNIQUE_MAIN_THREAD_PID += 1;
+export function processTrace(traceEvents: TraceEvent[]): ProcessedTrace {
   let mainThreadPID = null;
   for (const evt of traceEvents) {
     if (evt.args?.name === MAIN_THREAD_NAME) {
@@ -220,8 +214,6 @@ export function processTrace(
       continue;
     }
 
-    evt.pid = UNIQUE_MAIN_THREAD_PID + " | " + processPostfix;
-    evt.tid = UNIQUE_MAIN_THREAD_PID + " | " + processPostfix;
     filteredTraceEvents.push(evt);
 
     groupedTraceEvents[id] = groupedTraceEvents[id] ?? {
@@ -232,7 +224,6 @@ export function processTrace(
     groupedTraceEvents[id].originalEvents.push(evt);
   }
 
-  // console.log(JSON.stringify(processedTraceEvents, null, 2));
   return {
     grouped: groupedTraceEvents,
     filtered: filteredTraceEvents,

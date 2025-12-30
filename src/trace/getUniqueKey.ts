@@ -72,7 +72,6 @@ export function getUniqueEventKey(event: TraceEvent) {
       event.args.data.lineNumber,
       event.args.data.columnNumber,
       event.args.data.functionName,
-      event.args.data.scriptId,
     ].join("|");
     return getHash(tmp);
   }

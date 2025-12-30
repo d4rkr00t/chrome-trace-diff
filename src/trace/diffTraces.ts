@@ -5,22 +5,55 @@ import type { TraceEvent } from "./TraceEvent.ts";
 export function diffTraces(
   ptBefore: ProcessedTrace,
   ptAfter: ProcessedTrace,
-): [Array<TraceEvent>, Array<TraceEvent>] {
+): [
+  Array<TraceEvent>,
+  Array<TraceEvent>,
+  Array<TraceEvent>,
+  Array<TraceEvent>,
+] {
   const ptBeforeKeys = new Set(Object.keys(ptBefore.grouped));
   const ptAfterKeys = new Set(Object.keys(ptAfter.grouped));
 
   const matchingKeys = ptBeforeKeys.intersection(ptAfterKeys);
+  const onlyInPtBeforeKeys = ptBeforeKeys.difference(ptAfterKeys);
+  const onlyInPtAfterKeys = ptAfterKeys.difference(ptBeforeKeys);
 
-  const ptBeforeRanges = getEventsRanges(matchingKeys, ptBefore.grouped);
-  const ptAfterRanges = getEventsRanges(matchingKeys, ptAfter.grouped);
+  const ptBeforeCommonRanges = getEventsRanges(matchingKeys, ptBefore.grouped);
+  const ptBeforeOnlyRanges = getEventsRanges(
+    onlyInPtBeforeKeys,
+    ptBefore.grouped,
+  );
+  const ptAfterCommonRanges = getEventsRanges(matchingKeys, ptAfter.grouped);
+  const ptAfterOnlyRanges = getEventsRanges(onlyInPtAfterKeys, ptAfter.grouped);
 
-  const flatPtBeforeRanges = Object.values(ptBeforeRanges).flat();
-  const flatPtAfterRanges = Object.values(ptAfterRanges).flat();
+  const flatPtBeforeCommonRanges = Object.values(ptBeforeCommonRanges).flat();
+  const flatPtBeforeOnlyRanges = Object.values(ptBeforeOnlyRanges).flat();
+  const flatPtAfterCommonRanges = Object.values(ptAfterCommonRanges).flat();
+  const flatPtAfterOnlyRanges = Object.values(ptAfterOnlyRanges).flat();
 
-  const ptBeforeEventsInRange = getEventsInRanges(ptBefore, flatPtBeforeRanges);
-  const ptAfterEventsInRange = getEventsInRanges(ptAfter, flatPtAfterRanges);
+  const ptBeforeCommonEventsInRange = getEventsInRanges(
+    ptBefore,
+    flatPtBeforeCommonRanges,
+  );
+  const ptBeforeOnlyEventsInRange = getEventsInRanges(
+    ptBefore,
+    flatPtBeforeOnlyRanges,
+  );
+  const ptAfterCommonEventsInRange = getEventsInRanges(
+    ptAfter,
+    flatPtAfterCommonRanges,
+  );
+  const ptAfterOnlyEventsInRange = getEventsInRanges(
+    ptAfter,
+    flatPtAfterOnlyRanges,
+  );
 
-  return [ptBeforeEventsInRange, ptAfterEventsInRange];
+  return [
+    ptBeforeCommonEventsInRange,
+    ptAfterCommonEventsInRange,
+    ptBeforeOnlyEventsInRange,
+    ptAfterOnlyEventsInRange,
+  ];
 }
 
 function getEventsInRanges(
