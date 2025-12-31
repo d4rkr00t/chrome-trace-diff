@@ -112,28 +112,13 @@ export type TraceEvent = {
         };
       };
     }
+  | {
+      name: "TimerInstall";
+      args: {
+        data: {
+          timerId: number;
+          timeout: number;
+        };
+      };
+    }
 );
-
-// {
-//   args: {
-//     data: {
-//       columnNumber: 357,
-//       frame: '468D73F4200C2FF5A08D5C15EFBF3C6E',
-//       functionName: 'r.<computed>.onmessage',
-//       isolate: '15490442668739585124',
-//       lineNumber: 369,
-//       sampleTraceId: 1855610689097915,
-//       scriptId: '125',
-//       url: 'https://www.gstatic.com/recaptcha/releases/jdMmXeCQEkPbnFDy9T04NbgJ/recaptcha__en.js'
-//     }
-//   },
-//   cat: 'devtools.timeline',
-//   dur: 1271,
-//   name: 'FunctionCall',
-//   ph: 'X',
-//   pid: 93366,
-//   tdur: 1253,
-//   tid: 6224104,
-//   ts: 387525743890,
-//   tts: 1761517
-// };

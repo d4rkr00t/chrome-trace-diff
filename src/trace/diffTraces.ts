@@ -10,6 +10,8 @@ export function diffTraces(
   Array<TraceEvent>,
   Array<TraceEvent>,
   Array<TraceEvent>,
+  Array<TraceEvent>,
+  Array<TraceEvent>,
 ] {
   const ptBeforeKeys = new Set(Object.keys(ptBefore.grouped));
   const ptAfterKeys = new Set(Object.keys(ptAfter.grouped));
@@ -53,6 +55,14 @@ export function diffTraces(
     ptAfterCommonEventsInRange,
     ptBeforeOnlyEventsInRange,
     ptAfterOnlyEventsInRange,
+    [
+      ...(ptBefore.grouped["Profile"]?.originalEvents ?? []),
+      ...(ptBefore.grouped["ProfileChunk"]?.originalEvents ?? []),
+    ],
+    [
+      ...(ptAfter.grouped["Profile"]?.originalEvents ?? []),
+      ...(ptAfter.grouped["ProfileChunk"]?.originalEvents ?? []),
+    ],
   ];
 }
 

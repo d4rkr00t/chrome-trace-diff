@@ -4,8 +4,10 @@ import { diffTraces } from "./trace/diffTraces.ts";
 import { mergeTraces } from "./trace/mergeTraces.ts";
 import { adjustTrace } from "./trace/adjustTrace.ts";
 
-const beforeTracePath = "./example-traces/vanilla-aifc-off.json";
-const afterTracePath = "./example-traces/vanilla-aifc-on.json";
+// const beforeTracePath = "./example-traces/vanilla-aifc-off.json";
+// const afterTracePath = "./example-traces/vanilla-aifc-on.json";
+const beforeTracePath = "./example-traces/github-trace-1.json";
+const afterTracePath = "./example-traces/github-trace-2.json";
 
 function main() {
   const traceBefore = JSON.parse(fs.readFileSync(beforeTracePath, "utf8"));
@@ -14,15 +16,25 @@ function main() {
   const traceAfter = JSON.parse(fs.readFileSync(afterTracePath, "utf8"));
   const processedTraceAfter = processTrace(traceAfter.traceEvents);
 
-  const [beforeEvents, afterEvents, beforeUniqueEvents, afterUniqueEvents] =
-    diffTraces(processedTraceBefore, processedTraceAfter);
+  const [
+    beforeEvents,
+    afterEvents,
+    beforeUniqueEvents,
+    afterUniqueEvents,
+    beforeProfileEvents,
+    afterProfileEvents,
+  ] = diffTraces(processedTraceBefore, processedTraceAfter);
 
   fs.writeFileSync(
     "./out.json",
     JSON.stringify(
       mergeTraces(
         adjustTrace(beforeEvents, "Before Matching Events"),
+        adjustTrace(beforeProfileEvents, "Before Matching Events"),
+
         adjustTrace(afterEvents, "After Matching Events"),
+        adjustTrace(afterProfileEvents, "After Matching Events"),
+
         adjustTrace(beforeUniqueEvents, "Before Unique Events"),
         adjustTrace(afterUniqueEvents, "After Unique Events"),
       ),

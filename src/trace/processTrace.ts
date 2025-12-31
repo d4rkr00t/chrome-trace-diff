@@ -3,7 +3,7 @@ import type { ProcessedTrace } from "./ProcessedTrace.ts";
 import type { ProcessedTraceEvent } from "./ProcessedTraceEvent.ts";
 import type { TraceEvent } from "./TraceEvent.ts";
 
-const IGNORED_EVENT_PH = new Set(["M", "I", "f", "s"]);
+const IGNORED_EVENT_PH = new Set(["M", "f", "s"]);
 
 const IGNORED_EVENT_NAMES = new Set([
   "Activation",
@@ -251,8 +251,6 @@ const IGNORED_EVENT_NAMES = new Set([
   "PeriodicPurge",
   "PipelineReporter",
   "PointersUpdatingJob started",
-  "Profile",
-  "ProfileChunk",
   "ProxyImpl::InitializeLayerTreeFrameSinkOnImplThread",
   "ProxyImpl::OnCanDrawStateChanged",
   "ProxyImpl::ScheduledActionBeginLayerTreeFrameSinkCreation",
@@ -551,6 +549,40 @@ const IGNORED_EVENT_NAMES = new Set([
   "v8::Debugger::AsyncTaskRun",
   "v8::Debugger::AsyncTaskScheduled",
   "very_high",
+  "FrameStartedLoading",
+  "UpdateCounters",
+  "NeedsBeginFrameChanged",
+  "ResourceSendRequest",
+  "ResourceReceiveResponse",
+  "RendererNavigationMetricsManager::RecordTraceEventsAndMetrics",
+  "ResourceReceivedData",
+  "ResourceMarkAsCached",
+  "ResourceFinish",
+  "LinkPreconnect",
+  "BeginFrame",
+  "RequestMainThreadFrame",
+  "ParseMetaViewport",
+  "BeginMainThreadFrame",
+  "SetLayerTreeId",
+  "DOMStats",
+  "PaintTimingVisualizer::Viewport",
+  "BeginCommitCompositorFrame",
+  "ActivateLayerTree",
+  "DrawFrame",
+  "BenchmarkInstrumentation::ImplThreadRenderingStats",
+  "PaintTimingVisualizer::LayoutObjectPainted",
+  "Draw LazyPixelRef",
+  "MarkLoad",
+  "MarkDOMContent",
+  "LayoutImageUnsized",
+  "viewport",
+  "TracingSessionIdForWorker",
+  "WebSocketCreate",
+  "WebSocketSendHandshakeRequest",
+  "LoadFinished",
+  "WebSocketReceiveHandshakeResponse",
+  "WebSocketSend",
+  "WebSocketReceive",
 ]);
 
 const MAIN_THREAD_NAME = "CrRendererMain";

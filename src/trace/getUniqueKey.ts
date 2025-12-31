@@ -2,19 +2,29 @@ import { getHash } from "../utils/getHash.ts";
 import type { TraceEvent } from "./TraceEvent.ts";
 
 const ID_EVENTS = new Set([
+  "CancelAnimationFrame",
   "CpuProfiler::StartProfiling",
+  "DroppedFrame",
   "FireAnimationFrame",
   "FireIdleCallback",
   "InteractiveTime",
   "IntersectionObserverController::computeIntersections",
+  "InvalidateLayout",
   "Layerize",
   "Layout",
+  "LayoutShift",
   "LocalFrameView::performLayout",
   "MajorGC",
   "MinorGC",
   "Paint",
   "ParseAuthorStyleSheet",
   "PrePaint",
+  "Profile",
+  "ProfileChunk",
+  "RequestAnimationFrame",
+  "RequestIdleCallback",
+  "ScheduleStyleRecalculation",
+  "TimerRemove",
   "UpdateLayoutTree",
   "V8.DeoptimizeCode",
   "domComplete",
@@ -24,11 +34,6 @@ const ID_EVENTS = new Set([
   "firstMeaningfulPaint",
   "firstPaint",
   "navigationStart",
-  "Document::updateStyle",
-  "Document::recalcStyle",
-  "Document::rebuildLayoutTree",
-  "Document::UpdateStyleAndLayout",
-  "Blink.ForcedStyleAndLayout.UpdateTime",
 ]);
 
 export function getUniqueEventKey(event: TraceEvent) {
@@ -42,7 +47,12 @@ export function getUniqueEventKey(event: TraceEvent) {
   }
 
   if (event.name === "EvaluateScript") {
-    const tmp = `${event.name}|${event.args?.data?.url ?? ""}`;
+    const tmp = [
+      event.name,
+      event.args.data?.url ?? "unknown",
+      event.args.data?.lineNumber ?? 0,
+      event.args.data?.columnNumber ?? 0,
+    ].join("|");
     return getHash(tmp);
   }
 
@@ -93,6 +103,15 @@ export function getUniqueEventKey(event: TraceEvent) {
       event.args.data.lineNumber,
       event.args.data.columnNumber,
       event.args.data.functionName,
+    ].join("|");
+    return getHash(tmp);
+  }
+
+  if (event.name === "TimerInstall") {
+    const tmp = [
+      event.name,
+      event.args.data.timerId,
+      event.args.data.timeout,
     ].join("|");
     return getHash(tmp);
   }
