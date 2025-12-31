@@ -1,6 +1,6 @@
-import type { TraceEvent } from "./TraceEvent.ts";
+import type { ChromeTraceEvent } from "../ChromeTrace.ts";
 
-export function adjustTrace(trace: Array<TraceEvent>, pidName: string) {
+export function adjustTrace(trace: Array<ChromeTraceEvent>, pidName: string) {
   const [ts, tts] = getStartProfile(trace);
 
   return trace.map((event) => {
@@ -12,7 +12,7 @@ export function adjustTrace(trace: Array<TraceEvent>, pidName: string) {
   });
 }
 
-function getStartProfile(trace: Array<TraceEvent>): [number, number] {
+function getStartProfile(trace: Array<ChromeTraceEvent>): [number, number] {
   // const startEvent = trace.find(
   //   (evt) => evt.name === "CpuProfiler::StartProfiling",
   // );
@@ -25,7 +25,11 @@ function getStartProfile(trace: Array<TraceEvent>): [number, number] {
   return [0, 0];
 }
 
-function adjustStartTime(evt: TraceEvent, ts: number, tts: number): TraceEvent {
+function adjustStartTime(
+  evt: ChromeTraceEvent,
+  ts: number,
+  tts: number,
+): ChromeTraceEvent {
   evt.ts = evt.ts - ts;
   evt.tts = evt.tts - tts;
   return evt;

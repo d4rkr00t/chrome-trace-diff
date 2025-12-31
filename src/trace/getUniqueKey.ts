@@ -1,5 +1,5 @@
+import type { ChromeTraceEvent } from "../ChromeTrace.ts";
 import { getHash } from "../utils/getHash.ts";
-import type { TraceEvent } from "./TraceEvent.ts";
 
 const ID_EVENTS = new Set([
   "CancelAnimationFrame",
@@ -36,7 +36,7 @@ const ID_EVENTS = new Set([
   "navigationStart",
 ]);
 
-export function getUniqueEventKey(event: TraceEvent) {
+export function getUniqueEventKey(event: ChromeTraceEvent) {
   if (ID_EVENTS.has(event.name)) {
     return event.name;
   }
@@ -49,9 +49,9 @@ export function getUniqueEventKey(event: TraceEvent) {
   if (event.name === "EvaluateScript") {
     const tmp = [
       event.name,
-      event.args.data?.url ?? "unknown",
-      event.args.data?.lineNumber ?? 0,
-      event.args.data?.columnNumber ?? 0,
+      event.args?.data?.url ?? "unknown",
+      event.args?.data?.lineNumber ?? 0,
+      event.args?.data?.columnNumber ?? 0,
     ].join("|");
     return getHash(tmp);
   }

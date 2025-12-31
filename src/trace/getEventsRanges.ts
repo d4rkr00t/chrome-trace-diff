@@ -1,8 +1,8 @@
-import type { ProcessedTrace } from "./ProcessedTrace.ts";
+import type { ProcessedTrace } from "../types.ts";
 
 export function getEventsRanges(
   keys: Set<string>,
-  events: ProcessedTrace["grouped"],
+  events: ProcessedTrace["events"],
 ): Record<string, Array<[number, number]>> {
   const ranges: Record<string, Array<[number, number]>> = {};
 
