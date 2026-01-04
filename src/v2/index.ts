@@ -199,13 +199,13 @@ function buildTraceForFunctionCall(profileData, functionCallEvent) {
   const stack = samplesIndexes
     .map((idx) => {
       const nodeIdx = profile.samples[idx];
-      const [stack, seenFunction] = getStack(
+      const stack = getStack(
         profile.nodes,
         profile.nodes[nodeIdx - 1],
         functionCall,
       );
 
-      if (!seenFunction) {
+      if (!stack) {
         return null;
       }
 
@@ -214,7 +214,15 @@ function buildTraceForFunctionCall(profileData, functionCallEvent) {
         stack,
       ];
     })
-    .filter(Boolean);
+    .filter(Boolean)
+    .reduce(
+      (acc, item) => {
+        acc.total += Math.max(item[0], 0);
+        acc.stackFrames.push(item);
+        return acc;
+      },
+      { total: 0, stackFrames: [] },
+    );
   console.log("Stack:");
   console.log(JSON.stringify(stack, null, 2));
 }
@@ -222,19 +230,29 @@ function buildTraceForFunctionCall(profileData, functionCallEvent) {
 function getStack(profileNodes, node, functionCall) {
   const maybeSeenFunction =
     +node.callFrame.scriptId === +functionCall.args.data.scriptId &&
-    node.callFrame.functionName === functionCall.args.data.functionName;
+    node.callFrame.functionName === functionCall.args.data.functionName &&
+    node.callFrame.lineNumber + 1 === +functionCall.args.data.lineNumber &&
+    node.callFrame.columnNumber + 1 === +functionCall.args.data.columnNumber;
 
-  if (!node.parent) {
-    return [[node], maybeSeenFunction];
+  if (maybeSeenFunction) {
+    return [node];
   }
 
-  const [stack, seenFunction] = getStack(
+  if (!node.parent) {
+    return null;
+  }
+
+  const stack = getStack(
     profileNodes,
     profileNodes[node.parent - 1],
     functionCall,
   );
 
+  if (!stack) {
+    return null;
+  }
+
   stack.push(node);
 
-  return [stack, seenFunction || maybeSeenFunction];
+  return stack;
 }
