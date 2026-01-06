@@ -1,11 +1,11 @@
+import type { ChromeTraceEvent } from "../ChromeTraceEvent.ts";
+import type { ProfileDataEntry } from "../types.ts";
 import { buildCallStackForFunctionCall } from "./buildCallStackForFunctionCall.ts";
 import { getUniqueEventKey } from "./getUniqueKey.ts";
-import type { ProfileDataEntry } from "./ProfileDataEntry.ts";
-import type { TraceEvent } from "./TraceEvent.ts";
 
 export function buildCallStacks(
-  traceEvents: TraceEvent[],
-  filteredTraceEvents: TraceEvent[],
+  traceEvents: ChromeTraceEvent[],
+  filteredTraceEvents: ChromeTraceEvent[],
 ) {
   const profileData = compileProfileData(traceEvents);
   const callStacks: Record<string, unknown[]> = {};
@@ -24,7 +24,7 @@ export function buildCallStacks(
 }
 
 function compileProfileData(
-  traceEvents: TraceEvent[],
+  traceEvents: ChromeTraceEvent[],
 ): Record<string, ProfileDataEntry> {
   const profileData: Record<string, any> = {};
 

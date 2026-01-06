@@ -1,8 +1,8 @@
+import type { ChromeTraceEvent } from "../ChromeTraceEvent.ts";
+import type { ProcessedTraceEvent } from "../types.ts";
 import { getUniqueEventKey } from "./getUniqueKey.ts";
-import type { ProcessedTraceEvent } from "./ProcessedTraceEvent.ts";
-import type { TraceEvent } from "./TraceEvent.ts";
 
-export function groupTraceEvents(traceEvents: TraceEvent[]) {
+export function groupTraceEvents(traceEvents: ChromeTraceEvent[]) {
   const groupedTraceEvents: Record<string, ProcessedTraceEvent> = {};
 
   for (const evt of traceEvents) {
@@ -15,6 +15,7 @@ export function groupTraceEvents(traceEvents: TraceEvent[]) {
       id,
       name: evt.name,
       originalEvents: [],
+      callStacks: [],
     };
     groupedTraceEvents[id].originalEvents.push(evt);
   }

@@ -1,10 +1,9 @@
-import type { ProfileData } from "./ProfileData.ts";
-import type { ProfileDataNode } from "./ProfileDataEntry.ts";
-import type { TraceEventFunctionCall } from "./TraceEvent.ts";
+import type { ChromeTraceEventFunctionCall } from "../ChromeTraceEvent.ts";
+import type { ProfileData, ProfileDataNode } from "../types.ts";
 
 export function buildCallStackForFunctionCall(
   profileData: ProfileData,
-  evt: TraceEventFunctionCall,
+  evt: ChromeTraceEventFunctionCall,
 ) {
   const profileId = Object.keys(profileData).find((key) => {
     return (
@@ -67,7 +66,7 @@ export function buildCallStackForFunctionCall(
 function getStack(
   profileNodes: ProfileDataNode[],
   node: ProfileDataNode,
-  functionCall: TraceEventFunctionCall,
+  functionCall: ChromeTraceEventFunctionCall,
 ): null | ProfileDataNode[] {
   const maybeSeenFunction =
     +node.callFrame.scriptId === +functionCall.args.data.scriptId &&

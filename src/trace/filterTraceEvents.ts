@@ -1,13 +1,15 @@
 import { getUniqueEventKey } from "./getUniqueKey.ts";
 import { IGNORED_CHROME_TRACE_EVENT_NAMES } from "./IGNORED_CHROME_TRACE_EVENTS.ts";
-import type { TraceEvent } from "./TraceEvent.ts";
+import type { ChromeTraceEvent } from "../ChromTraceEvent.ts";
 
 const IGNORED_EVENT_PH = new Set(["M", "f", "s", "R", "I"]);
 
 const MAIN_THREAD_NAME = "CrRendererMain";
 
-export function filterTraceEvents(traceEvents: TraceEvent[]): TraceEvent[] {
-  const filteredTraceEvents: TraceEvent[] = [];
+export function filterTraceEvents(
+  traceEvents: ChromeTraceEvent[],
+): ChromeTraceEvent[] {
+  const filteredTraceEvents: ChromeTraceEvent[] = [];
 
   let mainThreadPID = null;
   for (const evt of traceEvents) {

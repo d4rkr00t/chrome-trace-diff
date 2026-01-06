@@ -1,17 +1,17 @@
 import { getEventsRanges } from "./getEventsRanges.ts";
+import type { ChromeTraceEvent } from "../ChromeTraceEvent.ts";
 import type { ProcessedTrace } from "./ProcessedTrace.ts";
-import type { TraceEvent } from "./TraceEvent.ts";
 
 export function diffTraces(
   ptBefore: ProcessedTrace,
   ptAfter: ProcessedTrace,
 ): [
-  Array<TraceEvent>,
-  Array<TraceEvent>,
-  Array<TraceEvent>,
-  Array<TraceEvent>,
-  Array<TraceEvent>,
-  Array<TraceEvent>,
+  Array<ChromeTraceEvent>,
+  Array<ChromeTraceEvent>,
+  Array<ChromeTraceEvent>,
+  Array<ChromeTraceEvent>,
+  Array<ChromeTraceEvent>,
+  Array<ChromeTraceEvent>,
 ] {
   const ptBeforeKeys = new Set(Object.keys(ptBefore.grouped));
   const ptAfterKeys = new Set(Object.keys(ptAfter.grouped));
