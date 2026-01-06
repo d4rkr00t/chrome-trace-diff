@@ -1,4 +1,7 @@
-import type { ChromeTraceEvent } from "./ChromTraceEvent.ts";
+import type {
+  ChromeTraceEvent,
+  ChromeTraceEventProfileDataNode,
+} from "./ChromeTraceEvent.ts";
 
 export type Diff = {
   traces: [unknown, unknown];
@@ -14,29 +17,24 @@ export type ProcessedTraceEvent = {
   id: string;
   name: string;
   originalEvents: ChromeTraceEvent[];
-  callStacks: unknown[];
+  callStacks: ProcessedTraceEventCallStack[];
+};
+
+export type ProcessedTraceEventCallStack = {
+  total: number;
+  stackFrames: ChromeTraceEventProfileDataNode[];
 };
 
 export type ProfileData = Record<string, ProfileDataEntry>;
 
 export type ProfileDataEntry = {
-  pid: string;
-  tid: string;
+  pid: string | number;
+  tid: string | number;
   ts: number;
   tts: number;
-  nodes: ProfileDataNode[];
+  nodes: ChromeTraceEventProfileDataNode[];
   samples: number[];
   trace_ids: Record<string, string>;
   timeDeltas: number[];
   timeAbs: number[];
-};
-
-export type ProfileDataNode = {
-  callFrame: {
-    scriptId: number;
-    functionName: string;
-    lineNumber: number;
-    columnNumber: number;
-  };
-  parent: number;
 };

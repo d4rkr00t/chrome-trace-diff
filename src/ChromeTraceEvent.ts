@@ -186,13 +186,26 @@ export type ChromeTraceEventProfile = ChromeTraceEventCommon & {
   id: string;
 };
 
+export type ChromeTraceEventProfileDataNode = {
+  callFrame: {
+    codeType: string;
+    columnNumber: number;
+    functionName: string;
+    lineNumber: number;
+    scriptId: number;
+    url: string;
+  };
+  id: number;
+  parent: number;
+};
+
 export type ChromeTraceEventProfileChunk = ChromeTraceEventCommon & {
   name: "ProfileChunk";
   id: string;
   args: {
     data: {
       cpuProfile: {
-        nodes: Array<unknown>;
+        nodes: Array<ChromeTraceEventProfileDataNode>;
         samples: Array<number>;
         trace_ids: Array<string>;
       };

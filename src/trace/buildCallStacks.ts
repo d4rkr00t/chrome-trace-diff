@@ -1,5 +1,9 @@
 import type { ChromeTraceEvent } from "../ChromeTraceEvent.ts";
-import type { ProfileDataEntry } from "../types.ts";
+import type {
+  ProcessedTraceEventCallStack,
+  ProfileData,
+  ProfileDataEntry,
+} from "../types.ts";
 import { buildCallStackForFunctionCall } from "./buildCallStackForFunctionCall.ts";
 import { getUniqueEventKey } from "./getUniqueKey.ts";
 
@@ -8,7 +12,7 @@ export function buildCallStacks(
   filteredTraceEvents: ChromeTraceEvent[],
 ) {
   const profileData = compileProfileData(traceEvents);
-  const callStacks: Record<string, unknown[]> = {};
+  const callStacks: Record<string, ProcessedTraceEventCallStack[]> = {};
 
   for (const evt of filteredTraceEvents) {
     if (evt.name !== "FunctionCall") {
@@ -26,7 +30,7 @@ export function buildCallStacks(
 function compileProfileData(
   traceEvents: ChromeTraceEvent[],
 ): Record<string, ProfileDataEntry> {
-  const profileData: Record<string, any> = {};
+  const profileData: ProfileData = {};
 
   for (const event of traceEvents) {
     if (event.name === "Profile") {
@@ -49,24 +53,25 @@ function compileProfileData(
       continue;
     }
 
-    profileData[event.id].nodes.push(
+    profileData[event.id]?.nodes.push(
       ...(event.args.data.cpuProfile?.nodes ?? []),
     );
 
-    profileData[event.id].samples.push(
+    profileData[event.id]?.samples.push(
       ...(event.args.data.cpuProfile?.samples ?? []),
     );
 
     Object.assign(
-      profileData[event.id].trace_ids,
+      profileData[event.id]?.trace_ids ?? {},
       event.args.data.cpuProfile?.trace_ids,
     );
 
     for (const delta of event.args.data.timeDeltas ?? []) {
-      profileData[event.id].timeDeltas.push(delta);
-      profileData[event.id].timeAbs.push(
-        (profileData[event.id].timeAbs.at(-1) ?? profileData[event.id].ts) +
-          delta,
+      profileData[event.id]?.timeDeltas.push(delta);
+      profileData[event.id]?.timeAbs.push(
+        (profileData[event.id]?.timeAbs.at(-1) ??
+          profileData[event.id]?.ts ??
+          0) + delta,
       );
     }
   }
