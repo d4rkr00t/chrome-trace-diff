@@ -1,46 +1,33 @@
 import fs from "node:fs";
-import { processTrace } from "./trace/processTrace.ts";
-import { diffTraces } from "./trace/diffTraces.ts";
-import { mergeTraces } from "./trace/mergeTraces.ts";
-import { adjustTrace } from "./trace/adjustTrace.ts";
+import { filterTraceEvents } from "./trace/filterTraceEvents.ts";
+import { groupTraceEvents } from "./trace/groupTraceEvents.ts";
+import { buildCallStacks } from "./trace/buildCallStacks.ts";
 
-// const beforeTracePath = "./example-traces/vanilla-aifc-off.json";
-// const afterTracePath = "./example-traces/vanilla-aifc-on.json";
-const beforeTracePath = "./example-traces/github-trace-1.json";
 const afterTracePath = "./example-traces/github-trace-2.json";
 
 function main() {
-  const traceBefore = JSON.parse(fs.readFileSync(beforeTracePath, "utf8"));
-  const processedTraceBefore = processTrace(traceBefore.traceEvents);
-
+  console.log(afterTracePath);
   const traceAfter = JSON.parse(fs.readFileSync(afterTracePath, "utf8"));
-  const processedTraceAfter = processTrace(traceAfter.traceEvents);
 
-  const [
-    beforeEvents,
-    afterEvents,
-    beforeUniqueEvents,
-    afterUniqueEvents,
-    beforeProfileEvents,
-    afterProfileEvents,
-  ] = diffTraces(processedTraceBefore, processedTraceAfter);
+  // 1. Filter events
+  const filteredTraceAfterEvents = filterTraceEvents(traceAfter.traceEvents);
 
-  fs.writeFileSync(
-    "./out.json",
-    JSON.stringify(
-      mergeTraces(
-        adjustTrace(beforeEvents, "Before Matching Events"),
-        adjustTrace(beforeProfileEvents, "Before Matching Events"),
+  // 2. Group events
+  const groupedTraceAfterEvents = groupTraceEvents(filteredTraceAfterEvents);
 
-        adjustTrace(afterEvents, "After Matching Events"),
-        adjustTrace(afterProfileEvents, "After Matching Events"),
-
-        adjustTrace(beforeUniqueEvents, "Before Unique Events"),
-        adjustTrace(afterUniqueEvents, "After Unique Events"),
-      ),
-    ),
-    "utf8",
+  // 3. Build call stacks
+  const callStacks = buildCallStacks(
+    traceAfter.traceEvents,
+    filteredTraceAfterEvents,
   );
+
+  for (const key of Object.keys(callStacks)) {
+    if (groupedTraceAfterEvents[key]) {
+      groupedTraceAfterEvents[key].callStacks = callStacks[key] ?? [];
+    }
+  }
+
+  console.log(JSON.stringify(groupedTraceAfterEvents, null, 2));
 }
 
 main();

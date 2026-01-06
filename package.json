@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:tsc": "tsc --noEmit"
   },
   "keywords": [],
   "author": "Stanislav Sysoev <@d4rkr00t> <d4rkr00t@gmail.com>",

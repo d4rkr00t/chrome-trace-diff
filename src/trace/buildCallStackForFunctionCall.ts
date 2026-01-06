@@ -1,5 +1,8 @@
-import type { ChromeTraceEventFunctionCall } from "../ChromeTraceEvent.ts";
-import type { ProfileData, ProfileDataNode } from "../types.ts";
+import type {
+  ChromeTraceEventFunctionCall,
+  ChromeTraceEventProfileDataNode,
+} from "../ChromeTraceEvent.ts";
+import type { ProcessedTraceEventCallStack, ProfileData } from "../types.ts";
 
 export function buildCallStackForFunctionCall(
   profileData: ProfileData,
@@ -45,9 +48,9 @@ export function buildCallStackForFunctionCall(
       return [
         profile.timeDeltas[idx] ?? 0 / 1000, // -> ms
         stack,
-      ];
+      ] as [number, ChromeTraceEventProfileDataNode[]];
     })
-    .reduce(
+    .reduce<ProcessedTraceEventCallStack>(
       (acc, item) => {
         if (!item) return acc;
 
@@ -64,10 +67,10 @@ export function buildCallStackForFunctionCall(
 }
 
 function getStack(
-  profileNodes: ProfileDataNode[],
-  node: ProfileDataNode,
+  profileNodes: ChromeTraceEventProfileDataNode[],
+  node: ChromeTraceEventProfileDataNode,
   functionCall: ChromeTraceEventFunctionCall,
-): null | ProfileDataNode[] {
+): null | ChromeTraceEventProfileDataNode[] {
   const maybeSeenFunction =
     +node.callFrame.scriptId === +functionCall.args.data.scriptId &&
     node.callFrame.functionName === functionCall.args.data.functionName &&

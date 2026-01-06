@@ -22,7 +22,7 @@ export type ProcessedTraceEvent = {
 
 export type ProcessedTraceEventCallStack = {
   total: number;
-  stackFrames: ChromeTraceEventProfileDataNode[];
+  stackFrames: [number, ChromeTraceEventProfileDataNode[]][];
 };
 
 export type ProfileData = Record<string, ProfileDataEntry>;
