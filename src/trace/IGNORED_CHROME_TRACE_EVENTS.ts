@@ -1,11 +1,4 @@
-import { getUniqueEventKey } from "./getUniqueKey.ts";
-import type { ProcessedTrace } from "./ProcessedTrace.ts";
-import type { ProcessedTraceEvent } from "./ProcessedTraceEvent.ts";
-import type { TraceEvent } from "./TraceEvent.ts";
-
-const IGNORED_EVENT_PH = new Set(["M", "f", "s"]);
-
-const IGNORED_EVENT_NAMES = new Set([
+export const IGNORED_CHROME_TRACE_EVENT_NAMES = new Set([
   "Activation",
   "Active",
   "Agent::ReportChildTargets",
@@ -583,73 +576,6 @@ const IGNORED_EVENT_NAMES = new Set([
   "WebSocketReceiveHandshakeResponse",
   "WebSocketSend",
   "WebSocketReceive",
+  "Profile",
+  "ProfileChunk",
 ]);
-
-const MAIN_THREAD_NAME = "CrRendererMain";
-
-export function processTrace(traceEvents: TraceEvent[]): ProcessedTrace {
-  let mainThreadPID = null;
-  for (const evt of traceEvents) {
-    if (evt.args?.name === MAIN_THREAD_NAME) {
-      mainThreadPID = evt.pid;
-    }
-  }
-
-  let seenStartProfile = false;
-  const groupedTraceEvents: Record<string, ProcessedTraceEvent> = {};
-  const filteredTraceEvents: Array<TraceEvent> = [];
-  for (const evt of traceEvents) {
-    if (evt.name.startsWith("URL:") && evt.cat === "navigation") {
-      continue;
-    }
-
-    if (evt.name.startsWith("react-")) {
-      continue;
-    }
-
-    if (evt.name.startsWith("auto cc::")) {
-      continue;
-    }
-
-    if (evt.name === "CpuProfiler::StartProfiling") {
-      seenStartProfile = true;
-      continue;
-    }
-
-    if (!seenStartProfile) {
-      continue;
-    }
-
-    if (IGNORED_EVENT_PH.has(evt.ph)) {
-      continue;
-    }
-
-    if (IGNORED_EVENT_NAMES.has(evt.name)) {
-      continue;
-    }
-
-    if (evt.pid !== mainThreadPID) {
-      continue;
-    }
-
-    const id = getUniqueEventKey(evt);
-    if (!id) {
-      console.log(evt);
-      continue;
-    }
-
-    filteredTraceEvents.push(evt);
-
-    groupedTraceEvents[id] = groupedTraceEvents[id] ?? {
-      id,
-      name: evt.name,
-      originalEvents: [],
-    };
-    groupedTraceEvents[id].originalEvents.push(evt);
-  }
-
-  return {
-    grouped: groupedTraceEvents,
-    filtered: filteredTraceEvents,
-  };
-}
