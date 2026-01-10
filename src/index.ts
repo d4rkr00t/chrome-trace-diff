@@ -1,33 +1,17 @@
 import fs from "node:fs";
-import { filterTraceEvents } from "./trace/filterTraceEvents.ts";
-import { groupTraceEvents } from "./trace/groupTraceEvents.ts";
-import { buildCallStacks } from "./trace/buildCallStacks.ts";
+import { processTrace } from "./trace/processTrace.ts";
 
+const beforeTracePath = "./example-traces/github-trace-1.json";
 const afterTracePath = "./example-traces/github-trace-2.json";
 
 function main() {
-  console.log(afterTracePath);
+  const traceBefore = JSON.parse(fs.readFileSync(beforeTracePath, "utf8"));
+  const traceBeforeResult = processTrace(traceBefore);
   const traceAfter = JSON.parse(fs.readFileSync(afterTracePath, "utf8"));
+  const traceAfterResult = processTrace(traceAfter);
 
-  // 1. Filter events
-  const filteredTraceAfterEvents = filterTraceEvents(traceAfter.traceEvents);
-
-  // 2. Group events
-  const groupedTraceAfterEvents = groupTraceEvents(filteredTraceAfterEvents);
-
-  // 3. Build call stacks
-  const callStacks = buildCallStacks(
-    traceAfter.traceEvents,
-    filteredTraceAfterEvents,
-  );
-
-  for (const key of Object.keys(callStacks)) {
-    if (groupedTraceAfterEvents[key]) {
-      groupedTraceAfterEvents[key].callStacks = callStacks[key] ?? [];
-    }
-  }
-
-  console.log(JSON.stringify(groupedTraceAfterEvents, null, 2));
+  console.log(traceBeforeResult);
+  console.log(traceAfterResult);
 }
 
 main();

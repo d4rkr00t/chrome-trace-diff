@@ -1,4 +1,4 @@
-import type { ChromeTraceEvent } from "../ChromeTraceEvent.ts";
+import type { ChromeTraceEvent } from "../ChromeTrace.ts";
 
 export function adjustTrace(trace: Array<ChromeTraceEvent>, pidName: string) {
   const [ts, tts] = getStartProfile(trace);

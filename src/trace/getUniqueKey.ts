@@ -1,5 +1,5 @@
+import type { ChromeTraceEvent } from "../ChromeTrace.ts";
 import { getHash } from "../utils/getHash.ts";
-import type { ChromeTraceEvent } from "../ChromeTraceEvent.ts";
 
 const ID_EVENTS = new Set([
   "CancelAnimationFrame",

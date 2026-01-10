@@ -1,9 +1,10 @@
-import type { ChromeTraceEvent } from "../ChromeTraceEvent.ts";
+import type { ChromeTraceEvent } from "../ChromeTrace.ts";
 import type {
   ProcessedTraceEventCallStack,
   ProfileData,
   ProfileDataEntry,
 } from "../types.ts";
+
 import { buildCallStackForFunctionCall } from "./buildCallStackForFunctionCall.ts";
 import { getUniqueEventKey } from "./getUniqueKey.ts";
 

@@ -1,4 +1,4 @@
-import type { ChromeTraceEvent } from "../ChromeTraceEvent.ts";
+import type { ChromeTraceEvent } from "../ChromeTrace.ts";
 import type { ProcessedTraceEvent } from "../types.ts";
 import { getUniqueEventKey } from "./getUniqueKey.ts";
 

@@ -1,7 +1,7 @@
 import type {
   ChromeTraceEvent,
   ChromeTraceEventProfileDataNode,
-} from "./ChromeTraceEvent.ts";
+} from "./ChromeTrace.ts";
 
 export type Diff = {
   traces: [unknown, unknown];

@@ -1,7 +1,7 @@
 import type {
   ChromeTraceEventFunctionCall,
   ChromeTraceEventProfileDataNode,
-} from "../ChromeTraceEvent.ts";
+} from "../ChromeTrace.ts";
 import type { ProcessedTraceEventCallStack, ProfileData } from "../types.ts";
 
 export function buildCallStackForFunctionCall(

@@ -244,3 +244,7 @@ export type ChromeTraceEvent =
   | ChromeTraceEventProfile
   | ChromeTraceEventProfileChunk
   | ChromeTraceEventFunctionCall;
+
+export type ChromeTrace = {
+  traceEvents: ChromeTraceEvent[];
+};

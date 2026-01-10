@@ -1,6 +1,7 @@
+import type { ChromeTraceEvent } from "../ChromeTrace.ts";
+
 import { getUniqueEventKey } from "./getUniqueKey.ts";
 import { IGNORED_CHROME_TRACE_EVENT_NAMES } from "./IGNORED_CHROME_TRACE_EVENTS.ts";
-import type { ChromeTraceEvent } from "../ChromeTraceEvent.ts";
 
 const IGNORED_EVENT_PH = new Set(["M", "f", "s", "R", "I"]);
 
