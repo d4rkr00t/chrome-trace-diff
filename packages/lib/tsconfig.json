@@ -12,6 +12,7 @@
       "node"
     ],
     "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
     // Other Outputs
     "sourceMap": true,
     "declaration": true,
@@ -33,5 +34,10 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+    "paths": {
+      "@chrome-trace-diff/lib": [
+        "../lib/src/index.ts"
+      ]
+    }
   }
 }

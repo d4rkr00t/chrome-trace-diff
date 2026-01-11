@@ -1,0 +1,19 @@
+import fs from "node:fs";
+import { processTrace } from "./trace/processTrace.ts";
+import { diffTraces } from "./trace/diffTraces.ts";
+
+const beforeTracePath = "./example-traces/github-trace-1.json";
+const afterTracePath = "./example-traces/github-trace-2.json";
+
+function main() {
+  const traceBefore = JSON.parse(fs.readFileSync(beforeTracePath, "utf8"));
+  const traceBeforeResult = processTrace(traceBefore);
+  const traceAfter = JSON.parse(fs.readFileSync(afterTracePath, "utf8"));
+  const traceAfterResult = processTrace(traceAfter);
+
+  const diff = diffTraces(traceBeforeResult, traceAfterResult);
+  fs.writeFileSync("./diff.json", JSON.stringify(diff, null, 2), "utf8");
+  console.log(diff);
+}
+
+main();

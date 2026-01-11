@@ -217,6 +217,7 @@ export const IGNORED_CHROME_TRACE_EVENT_NAMES = new Set([
   "LocalFrameView::ScheduleAnimation",
   "LocalFrameView::UpdateStyleAndLayout",
   "LocalFrameView::layout",
+  "LocalFrameView::performLayout",
   "LocalFrameView::performPostLayoutTasks",
   "LocalWindowProxy::CreateContext",
   "LocalWindowProxy::Initialize",

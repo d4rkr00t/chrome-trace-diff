@@ -5,7 +5,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "run:lib": "node ./packages/lib/src/index.ts",
+    "run:lib": "node ./packages/lib/src/cli.ts",
+    "run:viewer": "pnpm --filter viewer run dev",
     "lint:tsc": "pnpm -r run lint:tsc"
   },
   "keywords": [],

@@ -4,20 +4,31 @@ import type {
 } from "./ChromeTrace.ts";
 
 export type Diff = {
-  traces: [unknown, unknown];
+  traces: [ProcessedTrace, ProcessedTrace];
   matchingEvents: Set<string>;
   uniqueEvents: [Set<string>, Set<string>];
 };
 
 export type ProcessedTrace = {
   events: Record<string, ProcessedTraceEvent>;
+  eventsByName: Record<string, ProcessedTraceEventCounter>;
 };
+
+export type ProcessedTraceEventCounter = Record<
+  string,
+  {
+    eventIds: Set<string>;
+    total: number;
+    totalDuration: number;
+  }
+>;
 
 export type ProcessedTraceEvent = {
   id: string;
   name: string;
   originalEvents: ChromeTraceEvent[];
   callStacks: ProcessedTraceEventCallStack[];
+  totalDuration: number;
 };
 
 export type ProcessedTraceEventCallStack = {

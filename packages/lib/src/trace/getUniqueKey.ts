@@ -13,7 +13,6 @@ const ID_EVENTS = new Set([
   "Layerize",
   "Layout",
   "LayoutShift",
-  "LocalFrameView::performLayout",
   "MajorGC",
   "MinorGC",
   "Paint",

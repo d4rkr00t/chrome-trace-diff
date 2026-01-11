@@ -118,9 +118,6 @@ export type ChromeTraceEventDomInteractive = ChromeTraceEventCommon & {
   name: "domInteractive";
 };
 
-export type ChromeTraceEventLocalFrameViewPerformLayout =
-  ChromeTraceEventCommon & { name: "LocalFrameView::performLayout" };
-
 export type ChromeTraceEventTimerFire = ChromeTraceEventCommon & {
   name: "TimerFire";
 };
