@@ -1,0 +1,19 @@
+{
+  "name": "@chrome-trace-diff/lib",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:tsc": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "Stanislav Sysoev <@d4rkr00t> <d4rkr00t@gmail.com>",
+  "license": "MIT",
+  "packageManager": "pnpm@10.20.0",
+  "dependencies": {
+    "@types/node": "^25.0.2",
+    "typescript": "^5.9.3"
+  }
+}

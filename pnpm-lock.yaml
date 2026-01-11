@@ -6,7 +6,9 @@ settings:
 
 importers:
 
-  .:
+  .: {}
+
+  packages/lib:
     dependencies:
       '@types/node':
         specifier: ^25.0.2
