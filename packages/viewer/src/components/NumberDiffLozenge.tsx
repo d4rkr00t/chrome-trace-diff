@@ -1,6 +1,12 @@
 import styles from "./NumberDiffLozenge.module.css";
 
-export function NumberDiffLozenge({ value }: { value: number }) {
+export function NumberDiffLozenge({
+  value,
+  unit,
+}: {
+  value: number;
+  unit?: string;
+}) {
   const modifier =
     value === 0
       ? styles["--neutral"]
@@ -11,6 +17,7 @@ export function NumberDiffLozenge({ value }: { value: number }) {
   return (
     <span class={[styles.lozenge, modifier].join(" ")}>
       {value > 0 ? "+" + value : value}
+      {unit}
     </span>
   );
 }
