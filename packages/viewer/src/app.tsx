@@ -1,3 +1,6 @@
+import "./global-reset.css";
+import "./global-styles.css";
+
 import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";

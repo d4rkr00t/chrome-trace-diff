@@ -1,5 +1,37 @@
 import type { Diff } from "@chrome-trace-diff/lib";
+import styles from "./HighLevelStats.module.css";
+import { NumberDiffLozenge } from "./NumberDiffLozenge";
 
-export function HighLevelStats(diff: Diff) {
-  return <div class="highlevel-stats">Hello</div>;
+export function HighLevelStats({ diff }: { diff: Diff }) {
+  return (
+    <div class={styles["highlevel-stats"]}>
+      <div class="highlevel-stats__column">
+        <h2>Before:</h2>
+        <ul>
+          {Object.entries(diff.traces[0].eventsByName).map(([key, value]) => {
+            return (
+              <li>
+                {key}: {"" + value.total}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <div class="highlevel-stats__column">
+        <h2>After:</h2>
+        <ul>
+          {Object.entries(diff.traces[1].eventsByName).map(([key, value]) => {
+            return (
+              <li>
+                {key}: {"" + value.total} &nbsp;
+                <NumberDiffLozenge
+                  value={value?.total - diff.traces[0].eventsByName[key].total}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
 }

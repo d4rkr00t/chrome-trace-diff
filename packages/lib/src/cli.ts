@@ -13,7 +13,6 @@ function main() {
 
   const diff = diffTraces(traceBeforeResult, traceAfterResult);
   fs.writeFileSync("./diff.json", JSON.stringify(diff, null, 2), "utf8");
-  console.log(diff);
 }
 
 main();

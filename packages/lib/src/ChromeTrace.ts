@@ -225,7 +225,6 @@ export type ChromeTraceEvent =
   | ChromeTraceEventLayout
   | ChromeTraceEventLayerize
   | ChromeTraceEventDomInteractive
-  | ChromeTraceEventLocalFrameViewPerformLayout
   | ChromeTraceEventTimerFire
   | ChromeTraceEventPaint
   | ChromeTraceEventPrePaint

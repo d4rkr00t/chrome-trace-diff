@@ -5,14 +5,28 @@ import type {
 
 export type Diff = {
   traces: [ProcessedTrace, ProcessedTrace];
-  matchingEvents: Set<string>;
-  uniqueEvents: [Set<string>, Set<string>];
+  matchingEvents: Array<string>;
+  uniqueEvents: [Array<string>, Array<string>];
 };
 
 export type ProcessedTrace = {
-  events: Record<string, ProcessedTraceEvent>;
-  eventsByName: Record<string, ProcessedTraceEventCounter>;
+  events: ProcessedTraceEventsMap;
+  eventsByName: ProcessedTraceEventCounter;
+  timeline: Timeline;
 };
+
+export type ChromeTraceEventWithStack = ChromeTraceEvent & {
+  stack: ProcessedTraceEventCallStack;
+};
+
+export type Timeline = Array<TimelineEntry>;
+export type TimelineEntry = {
+  start: number;
+  end: number;
+  lanes: Array<Array<ChromeTraceEventWithStack>>;
+};
+
+export type ProcessedTraceEventsMap = Record<string, ProcessedTraceEvent>;
 
 export type ProcessedTraceEventCounter = Record<
   string,
