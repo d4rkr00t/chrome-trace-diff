@@ -117,3 +117,11 @@
   z-index: 3;
   box-shadow: 0 0 8px 2px rgba(0, 225, 255, 0.6);
 }
+
+/* Selected non-top-level event */
+.timeline__entry-event[data-selected] {
+  outline: 3px solid #ff9800;
+  outline-offset: -1px;
+  z-index: 4;
+  box-shadow: 0 0 8px 2px rgba(255, 152, 0, 0.6);
+}

@@ -202,6 +202,7 @@ export default function DiffTimeline({ diff }: { diff: Diff }) {
             setSelectedEvent({ event, source: "Before" });
           }}
           highlightedEntry={() => flameGraphState()?.beforeEntry ?? null}
+          selectedEvent={() => selectedEvent()?.event ?? null}
         />
         <Timeline
           trace={diff.traces[1]}
@@ -213,6 +214,7 @@ export default function DiffTimeline({ diff }: { diff: Diff }) {
             setSelectedEvent({ event, source: "After" });
           }}
           highlightedEntry={() => flameGraphState()?.afterEntry ?? null}
+          selectedEvent={() => selectedEvent()?.event ?? null}
         />
       </div>
       <Show when={selectedEvent()}>

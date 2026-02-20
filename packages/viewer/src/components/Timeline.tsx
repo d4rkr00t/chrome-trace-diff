@@ -22,6 +22,7 @@ export function Timeline({
   scale,
   onEventClick,
   highlightedEntry,
+  selectedEvent,
 }: {
   trace: ProcessedTrace;
   uniqueEvents: Set<string>;
@@ -29,6 +30,7 @@ export function Timeline({
   scale: Accessor<number>;
   onEventClick: (entry: TTimelineEntry, event: ChromeTraceEventWithStack) => void;
   highlightedEntry: Accessor<TTimelineEntry | null>;
+  selectedEvent: Accessor<ChromeTraceEventWithStack | null>;
 }) {
   return (
     <div class={styles.timeline}>
@@ -42,6 +44,7 @@ export function Timeline({
               scale={scale}
               onEventClick={onEventClick}
               highlightedEntry={highlightedEntry}
+              selectedEvent={selectedEvent}
             />
           )}
         </For>
@@ -56,14 +59,16 @@ function TimelineEntry({
   scale,
   onEventClick,
   highlightedEntry,
+  selectedEvent,
 }: {
   entry: TTimelineEntry;
   uniqueEvents: Set<string>;
   scale: Accessor<number>;
   onEventClick: (entry: TTimelineEntry, event: ChromeTraceEventWithStack) => void;
   highlightedEntry: Accessor<TTimelineEntry | null>;
+  selectedEvent: Accessor<ChromeTraceEventWithStack | null>;
 }) {
-  const isHighlighted = () => highlightedEntry() === entry;
+  const isHighlightedEntry = () => highlightedEntry() === entry;
 
   return (
     <div class={styles["timeline__entry-lane"]}>
@@ -73,10 +78,11 @@ function TimelineEntry({
             lane={lane}
             start={entry.start}
             isTopLevel={laneIdx() === 0}
-            isHighlighted={isHighlighted}
+            isHighlightedEntry={isHighlightedEntry}
             uniqueEvents={uniqueEvents}
             scale={scale}
             onClick={(event) => onEventClick(entry, event)}
+            selectedEvent={selectedEvent}
           />
         )}
       </For>
@@ -88,18 +94,20 @@ function TimelineEntryLane({
   lane,
   start,
   isTopLevel,
-  isHighlighted,
+  isHighlightedEntry,
   uniqueEvents,
   scale,
   onClick,
+  selectedEvent,
 }: {
   lane: Array<ChromeTraceEventWithStack>;
   start: number;
   isTopLevel: boolean;
-  isHighlighted: Accessor<boolean>;
+  isHighlightedEntry: Accessor<boolean>;
   uniqueEvents: Set<string>;
   scale: Accessor<number>;
   onClick: (event: ChromeTraceEventWithStack) => void;
+  selectedEvent: Accessor<ChromeTraceEventWithStack | null>;
 }) {
   const filtered = lane.filter((event) => !IGNORED_EVENTS.has(event.name));
 
@@ -118,6 +126,11 @@ function TimelineEntryLane({
             return Math.max((event.ts - prevEnd) / divisor, 0);
           };
 
+          const isSelected = () => selectedEvent() === event;
+          const isHighlighted = () =>
+            isSelected() || (isTopLevel && isHighlightedEntry());
+          const isSelectedNonTopLevel = () => isSelected() && !isTopLevel;
+
           return (
             <TimelineEntryEvent
               event={event}
@@ -125,7 +138,8 @@ function TimelineEntryLane({
               uniqueEvents={uniqueEvents}
               scale={scale}
               onClick={() => onClick(event)}
-              isHighlighted={isTopLevel ? isHighlighted : undefined}
+              isHighlighted={isHighlighted}
+              isSelectedNonTopLevel={isSelectedNonTopLevel}
             />
           );
         }}
@@ -141,13 +155,15 @@ function TimelineEntryEvent({
   scale,
   onClick,
   isHighlighted,
+  isSelectedNonTopLevel,
 }: {
   event: ChromeTraceEventWithStack;
   marginLeft: Accessor<number>;
   uniqueEvents: Set<string>;
   scale: Accessor<number>;
   onClick: () => void;
-  isHighlighted?: Accessor<boolean>;
+  isHighlighted: Accessor<boolean>;
+  isSelectedNonTopLevel: Accessor<boolean>;
 }) {
   const isUnique = uniqueEvents.has(`${event.name}|${event.ts}|${event.dur}`);
   const durationMs = (event.dur / 1000).toFixed(2);
@@ -166,7 +182,8 @@ function TimelineEntryEvent({
       style={styleString()}
       data-event-type={event.name}
       data-unique={isUnique ? "" : undefined}
-      data-highlighted={isHighlighted?.() ? "" : undefined}
+      data-highlighted={isHighlighted() ? "" : undefined}
+      data-selected={isSelectedNonTopLevel() ? "" : undefined}
       onClick={onClick}
     >
       {event.name}
