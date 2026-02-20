@@ -2,22 +2,78 @@
   position: relative;
   width: 100%;
   max-width: 100%;
-  overflow-y: scroll;
+}
+
+.timeline__label {
+  position: sticky;
+  left: 0;
+  padding: 4px 8px;
+  background: #1a1a1a;
+  color: #ccc;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.timeline__entries {
   display: flex;
   gap: 1px;
 }
 
 .timeline__entry {
+  white-space: nowrap;
 }
 
 .timeline__entry-event {
+  position: relative;
   background-color: red;
   color: black;
   overflow: hidden;
   display: inline-block;
   border-left: 1px solid black;
+  font-size: 10px;
+  line-height: 16px;
+  height: 16px;
+  cursor: pointer;
 }
 
+/* Striped overlay for unique events */
+.timeline__entry-event[data-unique] {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.55) 3px,
+    rgba(255, 255, 255, 0.55) 6px
+  );
+  outline: 2px solid #ff3d00;
+  outline-offset: -1px;
+  z-index: 1;
+}
+
+/* Tooltip */
+.timeline__tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  background: #222;
+  color: #eee;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.timeline__entry-event:hover > .timeline__tooltip {
+  display: block;
+}
+
+/* ── Event type colors ── */
 .timeline__entry-event[data-event-type="ParseHTML"],
 .timeline__entry-event[data-event-type="ParseAuthorStyleSheet"] {
   background-color: #4c8df6;
@@ -52,4 +108,12 @@
 .timeline__entry-event[data-event-type="MajorGC"],
 .timeline__entry-event[data-event-type="MinorGC"] {
   background-color: #f00;
+}
+
+/* Highlighted (active flame graph) */
+.timeline__entry-event[data-highlighted] {
+  outline: 3px solid #00e1ff;
+  outline-offset: -1px;
+  z-index: 3;
+  box-shadow: 0 0 8px 2px rgba(0, 225, 255, 0.6);
 }

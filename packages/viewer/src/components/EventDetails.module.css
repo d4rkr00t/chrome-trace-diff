@@ -1,0 +1,149 @@
+.event-details {
+  border-top: 2px solid #444;
+  background: #1a1a1a;
+  color: #ddd;
+  font-size: 13px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.event-details__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #222;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.event-details__title {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.event-details__source {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #555;
+  color: #eee;
+}
+
+.event-details__source[data-source="Before"] {
+  background: #2563eb;
+}
+
+.event-details__source[data-source="After"] {
+  background: #16a34a;
+}
+
+.event-details__close {
+  background: none;
+  border: 1px solid #555;
+  color: #aaa;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.event-details__close:hover {
+  background: #333;
+  color: #eee;
+}
+
+.event-details__body {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-details__section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.event-details__subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.event-details__table {
+  border-collapse: collapse;
+}
+
+.event-details__table td {
+  padding: 2px 12px 2px 0;
+  vertical-align: top;
+}
+
+.event-details__label {
+  color: #888;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.event-details__pre {
+  background: #111;
+  padding: 8px 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #ccc;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.event-details__stack {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.event-details__stack-entry {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.event-details__stack-count {
+  color: #facc15;
+  font-weight: 600;
+  min-width: 32px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.event-details__stack-frames {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-details__stack-frame {
+  color: #ddd;
+}
+
+.event-details__stack-url {
+  color: #777;
+  font-size: 11px;
+}

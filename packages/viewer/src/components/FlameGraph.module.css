@@ -1,0 +1,208 @@
+.flamegraph {
+  border-top: 2px solid #444;
+  background: #1a1a1a;
+  color: #ddd;
+  font-size: 13px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.flamegraph__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #222;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.flamegraph__title {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flamegraph__close {
+  background: none;
+  border: 1px solid #555;
+  color: #aaa;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.flamegraph__close:hover {
+  background: #333;
+  color: #eee;
+}
+
+.flamegraph__body {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Comparison columns ── */
+.flamegraph__comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flamegraph__side {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.flamegraph__side-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 3px 3px 0 0;
+  background: #555;
+  color: #eee;
+  align-self: flex-start;
+}
+
+.flamegraph__side-label[data-source="Before"] {
+  background: #2563eb;
+}
+
+.flamegraph__side-label[data-source="After"] {
+  background: #16a34a;
+}
+
+/* ── Flame chart area ── */
+.flamegraph__chart {
+  position: relative;
+  width: 100%;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 0 4px 4px 4px;
+  overflow: hidden;
+}
+
+.flamegraph__lane {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  border-bottom: 1px solid #222;
+}
+
+.flamegraph__lane:last-child {
+  border-bottom: none;
+}
+
+/* ── Individual span ── */
+.flamegraph__span {
+  position: absolute;
+  top: 1px;
+  height: 18px;
+  min-width: 1px;
+  overflow: hidden;
+  font-size: 9px;
+  line-height: 18px;
+  color: #000;
+  padding: 0 2px;
+  box-sizing: border-box;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.flamegraph__span:hover {
+  outline: 1px solid #fff;
+  outline-offset: -1px;
+  z-index: 2;
+}
+
+/* ── New span (red striped) ── */
+.flamegraph__span[data-new] {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 0, 0, 0.4) 3px,
+    rgba(255, 0, 0, 0.4) 6px
+  ) !important;
+  outline: 2px solid #ff3d00;
+  outline-offset: -1px;
+  z-index: 1;
+}
+
+/* ── Tooltip ── */
+.flamegraph__tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  background: #222;
+  color: #eee;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.flamegraph__span:hover > .flamegraph__tooltip {
+  display: block;
+}
+
+/* ── Empty state ── */
+.flamegraph__empty {
+  padding: 16px;
+  text-align: center;
+  color: #777;
+  font-style: italic;
+}
+
+/* ── Event type colors (same as Timeline) ── */
+.flamegraph__span[data-event-type="ParseHTML"],
+.flamegraph__span[data-event-type="ParseAuthorStyleSheet"] {
+  background-color: #4c8df6;
+}
+
+.flamegraph__span[data-event-type="FunctionCall"],
+.flamegraph__span[data-event-type="EvaluateScript"],
+.flamegraph__span[data-event-type="ScriptCompiled"],
+.flamegraph__span[data-event-type="FireAnimationFrame"],
+.flamegraph__span[data-event-type="TimerFire"],
+.flamegraph__span[data-event-type="v8.run"],
+.flamegraph__span[data-event-type="v8.compile"],
+.flamegraph__span[data-event-type="FireIdleCallback"] {
+  background-color: #facc15;
+}
+
+.flamegraph__span[data-event-type="Paint"] {
+  background-color: #37be5f;
+}
+
+.flamegraph__span[data-event-type="Layout"],
+.flamegraph__span[data-event-type="Layerize"],
+.flamegraph__span[data-event-type="UpdateLayoutTree"],
+.flamegraph__span[data-event-type="PrePaint"] {
+  background-color: #bf67ff;
+}
+
+.flamegraph__span[data-event-type="PaintImage"] {
+  background-color: #757575;
+}
+
+.flamegraph__span[data-event-type="MajorGC"],
+.flamegraph__span[data-event-type="MinorGC"] {
+  background-color: #f00;
+}
