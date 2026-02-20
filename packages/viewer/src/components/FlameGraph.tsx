@@ -1,11 +1,14 @@
 import type {
   TimelineEntry,
   ChromeTraceEventWithStack,
+  ProcessedTraceEventCallStack,
 } from "@chrome-trace-diff/lib";
+import { mergeCallStacks } from "@chrome-trace-diff/lib";
 import type { Accessor } from "solid-js";
-import { For, Show } from "solid-js";
+import { createMemo, For, Show } from "solid-js";
 
 import styles from "./FlameGraph.module.css";
+import { MergedFlameGraph } from "./MergedFlameGraph.tsx";
 
 export type FlameGraphState = {
   beforeEntry: TimelineEntry | null;
@@ -25,6 +28,23 @@ function collectSpanKeys(entry: TimelineEntry): Set<string> {
     }
   }
   return keys;
+}
+
+/**
+ * Collect all call stacks from every event in a TimelineEntry.
+ */
+function collectCallStacks(
+  entry: TimelineEntry,
+): ProcessedTraceEventCallStack[] {
+  const stacks: ProcessedTraceEventCallStack[] = [];
+  for (const lane of entry.lanes) {
+    for (const evt of lane) {
+      if (evt.stack) {
+        stacks.push(evt.stack);
+      }
+    }
+  }
+  return stacks;
 }
 
 function computeNewSpanKeys(
@@ -144,6 +164,18 @@ export function FlameGraph({
   const eventName = () => state().eventName;
   const newSpanKeys = () => computeNewSpanKeys(beforeEntry(), afterEntry());
   const noNewSpanKeys = () => undefined as Set<string> | undefined;
+  const beforeCallStacks = createMemo(() => {
+    const entry = beforeEntry();
+    return entry ? collectCallStacks(entry) : [];
+  });
+  const afterCallStacks = createMemo(() => {
+    const entry = afterEntry();
+    return entry ? collectCallStacks(entry) : [];
+  });
+  const beforeTree = createMemo(() => {
+    const stacks = beforeCallStacks();
+    return stacks.length > 0 ? mergeCallStacks(stacks) : undefined;
+  });
 
   return (
     <div class={styles["flamegraph"]}>
@@ -175,6 +207,9 @@ export function FlameGraph({
                 newSpanKeys={noNewSpanKeys}
                 onEventClick={(evt) => onEventClick(evt, "Before")}
               />
+              <Show when={beforeCallStacks().length > 0}>
+                <MergedFlameGraph callStacks={beforeCallStacks()} />
+              </Show>
             </div>
           </Show>
 
@@ -191,6 +226,12 @@ export function FlameGraph({
                 newSpanKeys={newSpanKeys}
                 onEventClick={(evt) => onEventClick(evt, "After")}
               />
+              <Show when={afterCallStacks().length > 0}>
+                <MergedFlameGraph
+                  callStacks={afterCallStacks()}
+                  beforeTree={beforeTree()}
+                />
+              </Show>
             </div>
           </Show>
         </div>

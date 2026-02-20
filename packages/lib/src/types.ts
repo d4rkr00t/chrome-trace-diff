@@ -50,6 +50,17 @@ export type ProcessedTraceEventCallStack = {
   stackFrames: [number, ChromeTraceEventProfileDataNode[]][];
 };
 
+export type FlameGraphNode = {
+  name: string;
+  scriptId: string | number;
+  url: string;
+  lineNumber: number;
+  columnNumber: number;
+  totalTime: number;
+  selfTime: number;
+  children: FlameGraphNode[];
+};
+
 export type ProfileData = Record<string, ProfileDataEntry>;
 
 export type ProfileDataEntry = {
