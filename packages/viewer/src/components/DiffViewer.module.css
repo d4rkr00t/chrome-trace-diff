@@ -1,0 +1,3 @@
+.diffviewer {
+  padding: calc(var(--spacing) * 4);
+}
