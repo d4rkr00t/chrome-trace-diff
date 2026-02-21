@@ -1,79 +1,107 @@
+import type { JSX } from "solid-js";
+
 import type {
   ProcessedTrace,
-  Timeline as TTimeline,
   TimelineEntry as TTimelineEntry,
   ChromeTraceEvent,
+  ChromeTraceEventWithStack,
+  Diff,
 } from "@chrome-trace-diff/lib";
-import type { ChromeTraceEventWithStack } from "@chrome-trace-diff/lib/src/types";
 
 import styles from "./Timeline.module.css";
 
-const IGNORED_EVENTS = new Set([
-  "IntersectionObserverController::computeIntersections",
-]);
+import { Card } from "./Card";
+import { getUniqueEventKey } from "@chrome-trace-diff/lib/src/trace/getUniqueKey";
 
-export function Timeline({ trace }: { trace: ProcessedTrace }) {
+export function Timeline(props: {
+  diff: Diff;
+  trace: ProcessedTrace;
+  scale: number;
+  title: JSX.Element;
+}) {
   return (
     <div class={styles.timeline}>
-      {trace.timeline.map((entry) => (
-        <TimelineEntry entry={entry} />
-      ))}
+      <div class={styles["timeline__title"]}>
+        <Card>{props.title}</Card>
+      </div>
+      <div class={styles["timeline__events-container"]}>
+        {props.trace.timeline.map((entry) => (
+          <TimelineEntry entry={entry} scale={props.scale} diff={props.diff} />
+        ))}
+      </div>
     </div>
   );
 }
 
-function TimelineEntry({ entry }: { entry: TTimelineEntry }) {
+function TimelineEntry(props: {
+  entry: TTimelineEntry;
+  scale: number;
+  diff: Diff;
+}) {
   return (
     <div class={styles["timeline__entry-lane"]}>
-      {entry.lanes.map((event) => (
-        <TimelineEntryLane lane={event} start={entry.start} />
+      {props.entry.lanes.map((event) => (
+        <TimelineEntryLane
+          lane={event}
+          start={props.entry.start}
+          scale={props.scale}
+          diff={props.diff}
+        />
       ))}
     </div>
   );
 }
 
-function TimelineEntryLane({
-  lane,
-  start,
-}: {
+function TimelineEntryLane(props: {
   lane: Array<ChromeTraceEventWithStack>;
   start: number;
+  scale: number;
+  diff: Diff;
 }) {
   return (
     <div class={styles["timeline__entry"]}>
-      {lane
-        .filter((event) => {
-          if (IGNORED_EVENTS.has(event.name)) {
-            return false;
-          }
-          return true;
-        })
-        .map((event, idx) => {
-          const offset =
-            idx === 0 ? event.ts - start : event.ts - (lane[idx - 1] ?? 0);
-          return <TimelineEntryEvent event={event} offset={offset} />;
-        })}
+      {props.lane.map((event, idx) => {
+        const offset = idx === 0 ? event.ts - props.start : 0;
+        return (
+          <TimelineEntryEvent
+            event={event}
+            offset={offset * props.scale}
+            scale={props.scale}
+            unique={
+              props.diff.uniqueEvents[0].includes(
+                getUniqueEventKey(event) ?? "",
+              ) ||
+              props.diff.uniqueEvents[1].includes(
+                getUniqueEventKey(event) ?? "",
+              )
+            }
+          />
+        );
+      })}
     </div>
   );
 }
 
-function TimelineEntryEvent({
-  event,
-  offset,
-}: {
+function TimelineEntryEvent(props: {
   event: ChromeTraceEvent;
   offset: number;
+  scale: number;
+  unique?: boolean;
 }) {
   return (
     <span
-      class={styles["timeline__entry-event"]}
-      style={{
-        width: `${event.dur / 100}px`,
-        "margin-left": `${offset / 100}px`,
+      classList={{
+        [styles["timeline__entry-event"]]: true,
+        [styles["--unique"]]: props.unique ?? false,
       }}
-      data-event-type={event.name}
+      style={{
+        width: `${(props.event.dur / 100) * props.scale}px`,
+        "margin-left": `${props.offset / 100}px`,
+      }}
+      data-event-type={props.event.name}
+      onClick={() => console.log(props.event)}
     >
-      {event.name}
+      {props.event.name}
     </span>
   );
 }

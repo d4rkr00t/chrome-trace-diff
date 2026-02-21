@@ -2,8 +2,11 @@ import fs from "node:fs";
 import { processTrace } from "./trace/processTrace.ts";
 import { diffTraces } from "./trace/diffTraces.ts";
 
-const beforeTracePath = "./example-traces/github-trace-1.json";
-const afterTracePath = "./example-traces/github-trace-2.json";
+// const beforeTracePath = "./example-traces/github-trace-1.json";
+// const afterTracePath = "./example-traces/github-trace-2.json";
+
+const beforeTracePath = "./example-traces/palette-trace-1.json";
+const afterTracePath = "./example-traces/palette-trace-2.json";
 
 function main() {
   const traceBefore = JSON.parse(fs.readFileSync(beforeTracePath, "utf8"));

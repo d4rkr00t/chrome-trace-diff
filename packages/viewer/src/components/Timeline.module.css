@@ -1,26 +1,43 @@
 .timeline {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  overflow-y: scroll;
+  min-width: max-content;
+}
+
+.timeline__title {
+  margin-block-end: calc(var(--spacing) * 3);
+}
+
+.timeline__events-container {
   display: flex;
-  gap: 1px;
+  gap: var(--spacing);
 }
 
 .timeline__entry {
+  white-space: nowrap;
+  display: flex;
+}
+
+.timeline__entry-lane {
+  padding-left: 2px;
+  border-left: 1px dotted var(--color-secondary);
 }
 
 .timeline__entry-event {
-  background-color: red;
+  background-color: #757575;
   color: black;
   overflow: hidden;
   display: inline-block;
   border-left: 1px solid black;
+  margin-bottom: 1px;
+  font-size: var(--text-xs);
+}
+
+.timeline__entry-event:hover {
+  cursor: pointer;
 }
 
 .timeline__entry-event[data-event-type="ParseHTML"],
 .timeline__entry-event[data-event-type="ParseAuthorStyleSheet"] {
-  background-color: #4c8df6;
+  background-color: var(--color-trace-parsing);
 }
 
 .timeline__entry-event[data-event-type="FunctionCall"],
@@ -31,25 +48,33 @@
 .timeline__entry-event[data-event-type="v8.run"],
 .timeline__entry-event[data-event-type="v8.compile"],
 .timeline__entry-event[data-event-type="FireIdleCallback"] {
-  background-color: #facc15;
+  background-color: var(--color-trace-scripting);
 }
 
 .timeline__entry-event[data-event-type="Paint"] {
-  background-color: #37be5f;
+  background-color: var(--color-trace-paint);
 }
 
 .timeline__entry-event[data-event-type="Layout"],
 .timeline__entry-event[data-event-type="Layerize"],
 .timeline__entry-event[data-event-type="UpdateLayoutTree"],
 .timeline__entry-event[data-event-type="PrePaint"] {
-  background-color: #bf67ff;
-}
-
-.timeline__entry-event[data-event-type="PaintImage"] {
-  background-color: #757575;
+  background-color: var(--color-trace-layout);
 }
 
 .timeline__entry-event[data-event-type="MajorGC"],
 .timeline__entry-event[data-event-type="MinorGC"] {
-  background-color: #f00;
+  background-color: var(--color-trace-gc);
+}
+
+.--unique {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 0, 0, 0.7) 2px,
+    rgba(255, 0, 0, 0.7) 4px
+  );
+  outline: 2px solid var(--color-destructive-foreground);
+  outline-offset: -1px;
 }

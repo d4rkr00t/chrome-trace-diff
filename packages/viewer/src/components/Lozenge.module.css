@@ -1,0 +1,32 @@
+.lozenge {
+  border-radius: var(--border-radius-sm);
+
+  padding-inline: calc(var(--spacing) * 2);
+  padding-block: calc(var(--spacing) / 2);
+
+  display: inline-block;
+}
+
+.--green {
+  background-color: var(--color-green-950);
+  color: var(--color-green-300);
+}
+
+.--orange {
+  background-color: var(--color-orange-900);
+  color: var(--color-orange-300);
+}
+
+.--neutral {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-foreground);
+}
+
+.--red {
+  background-color: color-mix(
+    in oklab,
+    var(--color-destructive) 20%,
+    transparent
+  );
+  color: var(--color-destructive-foreground);
+}

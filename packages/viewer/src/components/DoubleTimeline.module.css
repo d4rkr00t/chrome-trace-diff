@@ -1,0 +1,82 @@
+.doubletimeline {
+}
+
+.doubletimeline__container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.doubletimeline__conatiner::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera, new Edge */
+}
+
+.doubletimeline__container-width {
+  min-width: max-content;
+  display: flex;
+  gap: calc(var(--spacing) * 3);
+  flex-direction: column;
+}
+
+.doubletimeline__legend {
+  margin-block-end: calc(var(--spacing));
+  padding-block: calc(var(--spacing) * 3);
+  display: flex;
+  gap: calc(var(--spacing) * 3);
+  font-size: var(--text-xs);
+}
+
+.doubletimeline__legend-item {
+  display: flex;
+  gap: calc(var(--spacing) * 1);
+  align-items: center;
+}
+
+.doubletimeline__legend-color-box {
+  display: inline-block;
+  width: calc(var(--text-xs) * 1.2);
+  height: calc(var(--text-xs) * 1.2);
+  background: red;
+  border: 1px solid color-mix(in oklab, var(--color-border) 90%, transparent);
+  border-radius: 2px;
+}
+
+.--parsing {
+  background-color: var(--color-trace-parsing);
+}
+
+.--scripting {
+  background-color: var(--color-trace-scripting);
+}
+
+.--paint {
+  background-color: var(--color-trace-paint);
+}
+
+.--layout {
+  background-color: var(--color-trace-layout);
+}
+
+.--gc {
+  background-color: var(--color-trace-gc);
+}
+
+.--other {
+  background-color: var(--color-trace-other);
+}
+
+.--unique {
+  background-color: var(--color-trace-other);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 0, 0, 0.7) 2px,
+    rgba(255, 0, 0, 0.7) 4px
+  );
+  outline: 2px solid var(--color-destructive-foreground);
+  outline-offset: -1px;
+}

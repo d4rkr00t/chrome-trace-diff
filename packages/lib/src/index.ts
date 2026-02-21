@@ -1,3 +1,11 @@
-export type { Diff, Timeline, TimelineEntry, ProcessedTrace } from "./types.ts";
+export type {
+  Diff,
+  Timeline,
+  TimelineEntry,
+  ProcessedTrace,
+  ChromeTraceEventWithStack,
+} from "./types.ts";
 
 export type { ChromeTraceEvent } from "./ChromeTrace.ts";
+
+export { getUniqueEventKey } from "./trace/getUniqueKey.ts";
