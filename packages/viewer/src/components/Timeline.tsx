@@ -9,6 +9,8 @@ import type {
 
 import styles from "./Timeline.module.css";
 
+import { Card } from "./Card";
+
 export function Timeline(props: {
   trace: ProcessedTrace;
   scale: number;
@@ -16,7 +18,9 @@ export function Timeline(props: {
 }) {
   return (
     <div class={styles.timeline}>
-      <div class={styles["timeline__title"]}>{props.title}</div>
+      <div class={styles["timeline__title"]}>
+        <Card>{props.title}</Card>
+      </div>
       <div class={styles["timeline__events-container"]}>
         {props.trace.timeline.map((entry) => (
           <TimelineEntry entry={entry} scale={props.scale} />

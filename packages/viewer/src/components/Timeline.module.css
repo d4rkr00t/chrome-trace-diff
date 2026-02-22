@@ -1,11 +1,9 @@
 .timeline {
-  display: flex;
-  gap: calc(var(--spacing) * 3);
-  flex-direction: column;
-  margin-block-end: calc(var(--spacing) * 3);
+  min-width: max-content;
 }
 
 .timeline__title {
+  margin-block-end: calc(var(--spacing) * 3);
 }
 
 .timeline__events-container {

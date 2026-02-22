@@ -3,13 +3,17 @@
   width: 100%;
   max-width: 100%;
   overflow-y: scroll;
-  display: flex;
-  gap: 1px;
-  flex-direction: column;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
 
 .doubletimeline::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera, new Edge */
+}
+
+.doubletimeline__container {
+  min-width: max-content;
+  display: flex;
+  gap: calc(var(--spacing) * 3);
+  flex-direction: column;
 }

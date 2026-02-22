@@ -29,16 +29,18 @@ export function DoubleTimeline({ diff }: { diff: Diff }) {
 
   return (
     <div class={styles.doubletimeline}>
-      <Timeline
-        trace={diff.traces[0]}
-        scale={scale()}
-        title={<Lozenge color="green">Before</Lozenge>}
-      />
-      <Timeline
-        trace={diff.traces[1]}
-        scale={scale()}
-        title={<Lozenge color="orange">After</Lozenge>}
-      />
+      <div class={styles["doubletimeline__container"]}>
+        <Timeline
+          trace={diff.traces[0]}
+          scale={scale()}
+          title={<Lozenge color="green">Before</Lozenge>}
+        />
+        <Timeline
+          trace={diff.traces[1]}
+          scale={scale()}
+          title={<Lozenge color="orange">After</Lozenge>}
+        />
+      </div>
     </div>
   );
 }

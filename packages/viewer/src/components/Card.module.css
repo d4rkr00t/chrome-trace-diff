@@ -1,0 +1,7 @@
+.menubar {
+  background: color-mix(in oklab, var(--color-card-bg) 70%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-border) 50%, transparent);
+  border-radius: var(--border-radius-sm);
+  padding-inline: var(--spacing);
+  padding-block: var(--spacing);
+}
