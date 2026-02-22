@@ -1,11 +1,9 @@
 import { useContext, type JSX } from "solid-js";
 
 import type {
-  ProcessedTrace,
   TimelineEntry as TTimelineEntry,
   ChromeTraceEvent,
   ChromeTraceEventWithStack,
-  Diff,
 } from "@chrome-trace-diff/lib";
 
 import styles from "./Timeline.module.css";
@@ -14,33 +12,33 @@ import { Card } from "./Card";
 import { getUniqueEventKey } from "@chrome-trace-diff/lib/src/trace/getUniqueKey";
 import { DiffViewerStoreContext } from "~/context/DiffViewerStoreContext";
 
-export function Timeline(props: {
-  diff: Diff;
-  trace: ProcessedTrace;
-  title: JSX.Element;
-}) {
+export function Timeline(props: { title: JSX.Element; traceId: number }) {
+  const diffViewerStore = useContext(DiffViewerStoreContext);
+
   return (
     <div class={styles.timeline}>
       <div class={styles["timeline__title"]}>
         <Card>{props.title}</Card>
       </div>
       <div class={styles["timeline__events-container"]}>
-        {props.trace.timeline.map((entry) => (
-          <TimelineEntry entry={entry} diff={props.diff} />
-        ))}
+        {diffViewerStore.state.diff.traces[props.traceId].timeline.map(
+          (entry) => (
+            <TimelineEntry entry={entry} traceId={props.traceId} />
+          ),
+        )}
       </div>
     </div>
   );
 }
 
-function TimelineEntry(props: { entry: TTimelineEntry; diff: Diff }) {
+function TimelineEntry(props: { entry: TTimelineEntry; traceId: number }) {
   return (
     <div class={styles["timeline__entry-lane"]}>
       {props.entry.lanes.map((event) => (
         <TimelineEntryLane
           lane={event}
           start={props.entry.start}
-          diff={props.diff}
+          traceId={props.traceId}
         />
       ))}
     </div>
@@ -50,7 +48,7 @@ function TimelineEntry(props: { entry: TTimelineEntry; diff: Diff }) {
 function TimelineEntryLane(props: {
   lane: Array<ChromeTraceEventWithStack>;
   start: number;
-  diff: Diff;
+  traceId: number;
 }) {
   const diffViewerStore = useContext(DiffViewerStoreContext);
 
@@ -62,14 +60,9 @@ function TimelineEntryLane(props: {
           <TimelineEntryEvent
             event={event}
             offset={offset * diffViewerStore.state.scale}
-            unique={
-              props.diff.uniqueEvents[0].includes(
-                getUniqueEventKey(event) ?? "",
-              ) ||
-              props.diff.uniqueEvents[1].includes(
-                getUniqueEventKey(event) ?? "",
-              )
-            }
+            unique={diffViewerStore.state.diff.uniqueEvents[
+              props.traceId
+            ].includes(getUniqueEventKey(event) ?? "")}
           />
         );
       })}

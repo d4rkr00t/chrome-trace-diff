@@ -1,7 +1,4 @@
 import { onCleanup, useContext } from "solid-js";
-import { createSignal } from "solid-js";
-
-import type { Diff } from "@chrome-trace-diff/lib";
 
 import { DiffViewerStoreContext } from "~/context/DiffViewerStoreContext";
 
@@ -11,7 +8,7 @@ import { Card } from "./Card";
 
 import styles from "./DoubleTimeline.module.css";
 
-export function DoubleTimeline({ diff }: { diff: Diff }) {
+export function DoubleTimeline() {
   const diffViewerStore = useContext(DiffViewerStoreContext);
 
   const onKeyDown = (evt: KeyboardEvent) => {
@@ -35,14 +32,12 @@ export function DoubleTimeline({ diff }: { diff: Diff }) {
       <div class={styles["doubletimeline__container"]}>
         <div class={styles["doubletimeline__container-width"]}>
           <Timeline
-            diff={diff}
-            trace={diff.traces[0]}
             title={<Lozenge color="green">Before</Lozenge>}
+            traceId={0}
           />
           <Timeline
-            diff={diff}
-            trace={diff.traces[1]}
             title={<Lozenge color="orange">After</Lozenge>}
+            traceId={1}
           />
         </div>
       </div>
