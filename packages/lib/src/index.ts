@@ -7,3 +7,5 @@ export type {
 } from "./types.ts";
 
 export type { ChromeTraceEvent } from "./ChromeTrace.ts";
+
+export { getUniqueEventKey } from "./trace/getUniqueKey.ts";

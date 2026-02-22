@@ -23,7 +23,7 @@
 
 .doubletimeline__legend {
   margin-block-end: calc(var(--spacing));
-  padding-block: calc(var(--spacing) * 2);
+  padding-block: calc(var(--spacing) * 3);
   display: flex;
   gap: calc(var(--spacing) * 3);
   font-size: var(--text-xs);
@@ -74,8 +74,8 @@
     -45deg,
     transparent,
     transparent 2px,
-    rgba(255, 255, 255, 0.55) 2px,
-    rgba(255, 255, 255, 0.55) 4px
+    rgba(255, 0, 0, 0.7) 2px,
+    rgba(255, 0, 0, 0.7) 4px
   );
   outline: 2px solid var(--color-destructive-foreground);
   outline-offset: -1px;
