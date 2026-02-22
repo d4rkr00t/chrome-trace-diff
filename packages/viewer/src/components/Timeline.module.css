@@ -1,6 +1,16 @@
 .timeline {
   display: flex;
-  gap: 4px;
+  gap: calc(var(--spacing) * 3);
+  flex-direction: column;
+  margin-block-end: calc(var(--spacing) * 3);
+}
+
+.timeline__title {
+}
+
+.timeline__events-container {
+  display: flex;
+  gap: var(--spacing);
 }
 
 .timeline__entry {
@@ -10,7 +20,7 @@
 
 .timeline__entry-lane {
   padding-left: 2px;
-  border-left: 1px dotted oklch(0.56 0 0 / 0.18);
+  border-left: 1px dotted var(--color-secondary);
 }
 
 .timeline__entry-event {
@@ -19,9 +29,8 @@
   overflow: hidden;
   display: inline-block;
   border-left: 1px solid black;
-  border-radius: 2px;
   margin-bottom: 1px;
-  font-size: 0.9rem;
+  font-size: var(--text-xs);
 }
 
 .timeline__entry-event:hover {

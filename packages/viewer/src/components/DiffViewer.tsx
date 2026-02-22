@@ -9,7 +9,6 @@ export function DiffViewer({ diff }: { diff: Diff }) {
   return (
     <section class={styles.diffviewer}>
       <HighLevelStats diff={diff} />
-      <hr />
       <DoubleTimeline diff={diff} />
     </section>
   );

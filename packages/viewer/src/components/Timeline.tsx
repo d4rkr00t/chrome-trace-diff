@@ -1,3 +1,5 @@
+import type { JSX } from "solid-js";
+
 import type {
   ProcessedTrace,
   TimelineEntry as TTimelineEntry,
@@ -7,12 +9,19 @@ import type {
 
 import styles from "./Timeline.module.css";
 
-export function Timeline(props: { trace: ProcessedTrace; scale: number }) {
+export function Timeline(props: {
+  trace: ProcessedTrace;
+  scale: number;
+  title: JSX.Element;
+}) {
   return (
     <div class={styles.timeline}>
-      {props.trace.timeline.map((entry) => (
-        <TimelineEntry entry={entry} scale={props.scale} />
-      ))}
+      <div class={styles["timeline__title"]}>{props.title}</div>
+      <div class={styles["timeline__events-container"]}>
+        {props.trace.timeline.map((entry) => (
+          <TimelineEntry entry={entry} scale={props.scale} />
+        ))}
+      </div>
     </div>
   );
 }

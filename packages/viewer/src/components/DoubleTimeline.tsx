@@ -6,6 +6,7 @@ import type { Diff } from "@chrome-trace-diff/lib";
 import { Timeline } from "~/components/Timeline";
 
 import styles from "./DoubleTimeline.module.css";
+import { Lozenge } from "./Lozenge";
 
 export function DoubleTimeline({ diff }: { diff: Diff }) {
   const [scale, setScale] = createSignal(1);
@@ -28,8 +29,16 @@ export function DoubleTimeline({ diff }: { diff: Diff }) {
 
   return (
     <div class={styles.doubletimeline}>
-      <Timeline trace={diff.traces[0]} scale={scale()} />
-      <Timeline trace={diff.traces[1]} scale={scale()} />
+      <Timeline
+        trace={diff.traces[0]}
+        scale={scale()}
+        title={<Lozenge color="green">Before</Lozenge>}
+      />
+      <Timeline
+        trace={diff.traces[1]}
+        scale={scale()}
+        title={<Lozenge color="orange">After</Lozenge>}
+      />
     </div>
   );
 }
