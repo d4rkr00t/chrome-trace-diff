@@ -1,23 +1,24 @@
-import { onCleanup } from "solid-js";
+import { onCleanup, useContext } from "solid-js";
 import { createSignal } from "solid-js";
 
 import type { Diff } from "@chrome-trace-diff/lib";
 
-import { Timeline } from "~/components/Timeline";
+import { DiffViewerStoreContext } from "~/context/DiffViewerStoreContext";
 
-import styles from "./DoubleTimeline.module.css";
+import { Timeline } from "~/components/Timeline";
 import { Lozenge } from "./Lozenge";
 import { Card } from "./Card";
 
+import styles from "./DoubleTimeline.module.css";
+
 export function DoubleTimeline({ diff }: { diff: Diff }) {
-  const [scale, setScale] = createSignal(1);
+  const diffViewerStore = useContext(DiffViewerStoreContext);
 
   const onKeyDown = (evt: KeyboardEvent) => {
     if (evt.key === "w") {
-      setScale(scale() + 0.2);
+      diffViewerStore.actions.incScale();
     } else if (evt.key === "s") {
-      const nextScale = scale() - 0.2;
-      setScale(Math.max(nextScale, 1));
+      diffViewerStore.actions.decScale();
     }
   };
 
@@ -36,13 +37,11 @@ export function DoubleTimeline({ diff }: { diff: Diff }) {
           <Timeline
             diff={diff}
             trace={diff.traces[0]}
-            scale={scale()}
             title={<Lozenge color="green">Before</Lozenge>}
           />
           <Timeline
             diff={diff}
             trace={diff.traces[1]}
-            scale={scale()}
             title={<Lozenge color="orange">After</Lozenge>}
           />
         </div>
