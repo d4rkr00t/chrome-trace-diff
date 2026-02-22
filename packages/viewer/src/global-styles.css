@@ -19,8 +19,16 @@
   --color-orange-900: oklch(0.41 0.12 38);
   --color-border: lab(100% 0 0 / 0.1);
 
+  --color-trace-parsing: #4c8df6;
+  --color-trace-scripting: #facc15;
+  --color-trace-paint: #37be5f;
+  --color-trace-layout: #bf67ff;
+  --color-trace-gc: #f00;
+  --color-trace-other: #757575;
+
   --font-size: 18px;
   --text-xs: 0.75rem;
+  --text-md: 1rem;
 
   --radius: 0.625rem;
 

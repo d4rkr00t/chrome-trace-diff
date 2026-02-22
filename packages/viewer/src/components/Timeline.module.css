@@ -22,7 +22,7 @@
 }
 
 .timeline__entry-event {
-  background-color: red;
+  background-color: #757575;
   color: black;
   overflow: hidden;
   display: inline-block;
