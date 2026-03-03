@@ -1,12 +1,13 @@
-import { Diff } from "@chrome-trace-diff/lib";
+import { ChromeTraceEvent, Diff } from "@chrome-trace-diff/lib";
 
 export type DiffViewerStore = {
   diff: Diff;
   scale: number;
-  selected: null;
+  selectedChromeEventId: null | string;
 };
 
 export type DiffViewerStoreActions = {
   incScale: () => void;
   decScale: () => void;
+  selectChromeEvent: (event: ChromeTraceEvent) => void;
 };

@@ -1,5 +1,8 @@
-import type { Diff } from "@chrome-trace-diff/lib";
+import { type Diff } from "@chrome-trace-diff/lib";
 import { createStore } from "solid-js/store";
+
+// TODO: fix this
+import { getUniqueEventKey } from "@chrome-trace-diff/lib/src/trace/getUniqueKey";
 
 import { DiffViewerStore, DiffViewerStoreActions } from "../types";
 
@@ -11,7 +14,7 @@ export function createDiffViewerStore(diff: Diff) {
   const [state, setState] = createStore<DiffViewerStore>({
     diff,
     scale: MIN_SCALE,
-    selected: null,
+    selectedChromeEventId: null,
   });
 
   const actions: DiffViewerStoreActions = {
@@ -24,6 +27,11 @@ export function createDiffViewerStore(diff: Diff) {
       setState("scale", (scale) => {
         return Math.max(scale / SCALE_STEP, MIN_SCALE);
       });
+    },
+    selectChromeEvent: (event) => {
+      const id = getUniqueEventKey(event);
+      console.log("Selected", id, event);
+      setState("selectedChromeEventId", () => id ?? null);
     },
   };
 

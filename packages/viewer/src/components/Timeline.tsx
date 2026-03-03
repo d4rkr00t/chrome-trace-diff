@@ -6,10 +6,12 @@ import type {
   ChromeTraceEventWithStack,
 } from "@chrome-trace-diff/lib";
 
+// TODO: fix this
+import { getUniqueEventKey } from "@chrome-trace-diff/lib/src/trace/getUniqueKey";
+
 import styles from "./Timeline.module.css";
 
 import { Card } from "./Card";
-import { getUniqueEventKey } from "@chrome-trace-diff/lib/src/trace/getUniqueKey";
 import { DiffViewerStoreContext } from "~/context/DiffViewerStoreContext";
 
 export function Timeline(props: { title: JSX.Element; traceId: number }) {
@@ -82,13 +84,16 @@ function TimelineEntryEvent(props: {
       classList={{
         [styles["timeline__entry-event"]]: true,
         [styles["--unique"]]: props.unique ?? false,
+        [styles["--selected"]]:
+          diffViewerStore.state.selectedChromeEventId ===
+          getUniqueEventKey(props.event),
       }}
       style={{
         width: `${(props.event.dur / 100) * diffViewerStore.state.scale}px`,
         "margin-left": `${props.offset / 100}px`,
       }}
       data-event-type={props.event.name}
-      onClick={() => console.log(props.event)}
+      onClick={() => diffViewerStore.actions.selectChromeEvent(props.event)}
     >
       {props.event.name}
     </span>
