@@ -32,14 +32,7 @@ export function HighLevelStats({ diff }: { diff: Diff }) {
                 <NumberDiffLozenge
                   value={value?.total - diff.traces[0].eventsByName[key].total}
                 />{" "}
-                <NumberDiffLozenge
-                  value={
-                    (value?.totalDuration -
-                      diff.traces[0].eventsByName[key].totalDuration) /
-                    1000
-                  }
-                  unit="ms"
-                />
+                {value?.totalDuration / 1000}ms{" "}
                 <NumberDiffLozenge
                   value={
                     (value?.totalDuration -
