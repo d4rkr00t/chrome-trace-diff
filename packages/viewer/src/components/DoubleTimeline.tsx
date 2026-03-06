@@ -3,8 +3,8 @@ import { onCleanup, useContext } from "solid-js";
 import { DiffViewerStoreContext } from "~/context/DiffViewerStoreContext";
 
 import { Timeline } from "~/components/Timeline";
-import { Lozenge } from "./Lozenge";
-import { Card } from "./Card";
+import { Lozenge } from "~/components/Lozenge";
+import { Card } from "~/components/Card";
 
 import styles from "./DoubleTimeline.module.css";
 

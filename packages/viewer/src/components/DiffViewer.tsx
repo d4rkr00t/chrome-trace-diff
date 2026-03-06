@@ -7,6 +7,7 @@ import { DoubleTimeline } from "./DoubleTimeline";
 
 import styles from "./DiffViewer.module.css";
 import { DiffViewerStoreContext } from "~/context/DiffViewerStoreContext";
+import { EventDetails } from "./EventDetails";
 
 export function DiffViewer({ diff }: { diff: Diff }) {
   const [diffViewerStoreState, diffViewerStoreActions] =
@@ -21,7 +22,8 @@ export function DiffViewer({ diff }: { diff: Diff }) {
     >
       <section class={styles.diffviewer}>
         <HighLevelStats diff={diff} />
-        <DoubleTimeline diff={diff} />
+        <DoubleTimeline />
+        <EventDetails />
       </section>
     </DiffViewerStoreContext.Provider>
   );

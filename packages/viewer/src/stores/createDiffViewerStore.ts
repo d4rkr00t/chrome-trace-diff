@@ -32,8 +32,8 @@ export function createDiffViewerStore(diff: Diff) {
       const id = getUniqueEventKey(event);
       if (state.selectedChromeEventId === id) {
         setState("selectedChromeEventId", () => null);
-      } else {
-        setState("selectedChromeEventId", () => id ?? null);
+      } else if (id) {
+        setState("selectedChromeEventId", () => id);
       }
     },
   };
