@@ -339,6 +339,7 @@ export const IGNORED_CHROME_TRACE_EVENT_NAMES = new Set([
   "ScopedBlockingCall",
   "ScopedBlockingCallWithBaseSyncPrimitives",
   "ScriptCatchup",
+  "ScriptCompiled",
   "ScriptInjection",
   "ScriptInjection::InjectJs",
   "ScriptRunner::ExecutePendingScript",

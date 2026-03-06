@@ -4,6 +4,7 @@ export type {
   TimelineEntry,
   ProcessedTrace,
   ChromeTraceEventWithStack,
+  ProcessedTraceEvent,
 } from "./types.ts";
 
 export type { ChromeTraceEvent } from "./ChromeTrace.ts";

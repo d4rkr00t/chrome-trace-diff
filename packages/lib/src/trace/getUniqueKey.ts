@@ -76,7 +76,7 @@ export function getUniqueEventKey(event: ChromeTraceEvent) {
   }
 
   if (event.name === "ScriptCompiled") {
-    const tmp = `${event.name}|${event.args.data.url}`;
+    const tmp = `${event.name}|${event.args.data.url}|${event.args.data.scriptId}`;
     return getHash(tmp);
   }
 
