@@ -9,6 +9,7 @@ import { EventDetailsCommon } from "~/components/EventDetailsCommon";
 import { EventDetailsLayout } from "~/components/EventDetailsLayout";
 
 import styles from "./EventDetails.module.css";
+import { EventDetailsEvaluateScript } from "./EventDetailsEvaluateScript";
 
 export function EventDetails() {
   const diffViewerStore = useContext(DiffViewerStoreContext);
@@ -55,14 +56,15 @@ export function EventDetails() {
           />
         </Show>
 
+        <Show when={eventType() === "EvaluateScript"}>
+          <EventDetailsEvaluateScript
+            beforeEvent={beforeEvent()}
+            afterEvent={afterEvent()}
+          />
+        </Show>
+
         <Show when={eventType() === "unknown"}>unknown event type</Show>
       </Card>
     </Show>
   );
 }
-
-// <div>
-//   <Show when={beforeEvent() || afterEvent()}>
-//     <div>{beforeEvent()?.name ?? afterEvent()?.name}</div>
-//   </Show>
-// </div>
