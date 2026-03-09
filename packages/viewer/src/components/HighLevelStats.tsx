@@ -2,15 +2,16 @@ import type { Diff } from "@chrome-trace-diff/lib";
 import styles from "./HighLevelStats.module.css";
 import { NumberDiffLozenge } from "./NumberDiffLozenge";
 import { Lozenge } from "./Lozenge";
+import { Card } from "./Card";
 
 export function HighLevelStats({ diff }: { diff: Diff }) {
   return (
-    <div class={styles["highlevel-stats"]}>
-      <div class="highlevel-stats__column">
+    <Card customClass={styles["highlevel-stats"]}>
+      <div class={styles["highlevel-stats__column"]}>
         <div>
           <Lozenge color="green">Before</Lozenge>
         </div>
-        <ul>
+        <ul class={styles["highlevel-stats__list"]}>
           {Object.entries(diff.traces[0].eventsByName).map(([key, value]) => {
             return (
               <li>
@@ -20,11 +21,11 @@ export function HighLevelStats({ diff }: { diff: Diff }) {
           })}
         </ul>
       </div>
-      <div class="highlevel-stats__column">
+      <div class={styles["highlevel-stats__column"]}>
         <div>
           <Lozenge color="orange">After</Lozenge>
         </div>
-        <ul>
+        <ul class={styles["highlevel-stats__list"]}>
           {Object.entries(diff.traces[1].eventsByName).map(([key, value]) => {
             return (
               <li>
@@ -46,6 +47,6 @@ export function HighLevelStats({ diff }: { diff: Diff }) {
           })}
         </ul>
       </div>
-    </div>
+    </Card>
   );
 }

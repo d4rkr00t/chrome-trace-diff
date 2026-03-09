@@ -36,6 +36,7 @@
   --border-radius-2xl: calc(var(--radius) * 2);
   --border-radius-md: var(--radius);
   --border-radius-sm: calc(var(--radius) / 2);
+  --border-radius-xsm: calc(var(--radius) / 4);
 
   --spacing: 0.25rem;
 }

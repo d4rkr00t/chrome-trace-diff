@@ -1,4 +1,18 @@
 .highlevel-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 1rem;
+}
+
+.highlevel-stats__column {
+  padding-block: calc(var(--spacing));
+  padding-inline: calc(var(--spacing) * 2);
+}
+
+ul.highlevel-stats__list {
+  padding-block: calc(var(--spacing) * 2);
+}
+
+ul.highlevel-stats__list li {
+  /* TODO: alternate background */
 }

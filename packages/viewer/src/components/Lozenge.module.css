@@ -1,10 +1,13 @@
 .lozenge {
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-xsm);
 
   padding-inline: calc(var(--spacing) * 2);
   padding-block: calc(var(--spacing) / 2);
 
   display: inline-block;
+
+  text-transform: uppercase;
+  font-size: var(--text-xs);
 }
 
 .--green {
