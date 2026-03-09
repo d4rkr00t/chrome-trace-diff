@@ -22,7 +22,6 @@
 }
 
 .doubletimeline__legend {
-  margin-block-end: calc(var(--spacing));
   padding-block: calc(var(--spacing) * 3);
   display: flex;
   gap: calc(var(--spacing) * 3);

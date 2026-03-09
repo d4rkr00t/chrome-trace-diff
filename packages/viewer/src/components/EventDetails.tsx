@@ -41,7 +41,11 @@ export function EventDetails() {
 
   return (
     <Show when={diffViewerStore.state.selectedChromeEventId}>
-      <Card customClass={styles["event-details"]}>
+      <Card
+        customClass={styles["event-details"]}
+        title={eventType()}
+        spacing="lg"
+      >
         <EventDetailsCommon
           beforeEvent={beforeEvent()}
           afterEvent={afterEvent()}

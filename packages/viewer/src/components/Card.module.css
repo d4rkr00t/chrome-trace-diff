@@ -2,6 +2,25 @@
   background: color-mix(in oklab, var(--color-card-bg) 70%, transparent);
   border: 1px solid color-mix(in oklab, var(--color-border) 50%, transparent);
   border-radius: var(--border-radius-sm);
+}
+
+.card.--spacing-sm {
+  margin-block: var(--spacing);
+}
+
+.card.--spacing-lg {
+  margin-block: calc(var(--spacing) * 4);
+}
+
+.card__content {
   padding-inline: var(--spacing);
   padding-block: var(--spacing);
+  width: 100%;
+}
+
+.card__title {
+  font-size: var(--text-md);
+  font-weight: 600;
+  background: color-mix(in oklab, var(--color-card-bg) 98%, #fff);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
 }

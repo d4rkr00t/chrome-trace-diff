@@ -47,7 +47,7 @@ export function DoubleTimeline() {
 
 function DoubleTimelineLegend() {
   return (
-    <Card customClass={styles["doubletimeline__legend"]}>
+    <Card customClass={styles["doubletimeline__legend"]} spacing="sm">
       <span class={styles["doubletimeline__legend-item"]}>
         <span
           classList={{

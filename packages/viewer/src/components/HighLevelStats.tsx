@@ -6,7 +6,7 @@ import { Card } from "./Card";
 
 export function HighLevelStats({ diff }: { diff: Diff }) {
   return (
-    <Card customClass={styles["highlevel-stats"]}>
+    <Card customClass={styles["highlevel-stats"]} spacing="lg">
       <div class={styles["highlevel-stats__column"]}>
         <div>
           <Lozenge color="green">Before</Lozenge>

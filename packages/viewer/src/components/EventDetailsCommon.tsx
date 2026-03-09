@@ -9,10 +9,6 @@ export function EventDetailsCommon(props: {
 }) {
   return (
     <>
-      <h2>{props.beforeEvent?.name ?? props.afterEvent?.name}</h2>
-
-      <hr />
-
       <div>
         <Show when={props.beforeEvent}>
           <div>
@@ -40,6 +36,13 @@ export function EventDetailsCommon(props: {
             />
           </div>
         </Show>
+        <pre>
+          {JSON.stringify(
+            props.beforeEvent?.originalEvents[0].args?.data,
+            null,
+            2,
+          )}
+        </pre>
       </div>
     </>
   );
