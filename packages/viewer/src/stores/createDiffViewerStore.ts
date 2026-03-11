@@ -7,13 +7,14 @@ import { getUniqueEventKey } from "@chrome-trace-diff/lib/src/trace/getUniqueKey
 import { DiffViewerStore, DiffViewerStoreActions } from "../types";
 
 const MAX_SCALE = 40;
-const MIN_SCALE = 1;
+const MIN_SCALE = 0.1;
+const DEFAULT_SCALE = 1;
 const SCALE_STEP = 1.5;
 
 export function createDiffViewerStore(diff: Diff) {
   const [state, setState] = createStore<DiffViewerStore>({
     diff,
-    scale: MIN_SCALE,
+    scale: DEFAULT_SCALE,
     selectedChromeEventId: null,
   });
 

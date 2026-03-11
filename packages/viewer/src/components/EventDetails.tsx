@@ -50,24 +50,6 @@ export function EventDetails() {
           beforeEvent={beforeEvent()}
           afterEvent={afterEvent()}
         />
-
-        <hr />
-
-        <Show when={eventType() === "Layout"}>
-          <EventDetailsLayout
-            beforeEvent={beforeEvent()}
-            afterEvent={afterEvent()}
-          />
-        </Show>
-
-        <Show when={eventType() === "EvaluateScript"}>
-          <EventDetailsEvaluateScript
-            beforeEvent={beforeEvent()}
-            afterEvent={afterEvent()}
-          />
-        </Show>
-
-        <Show when={eventType() === "unknown"}>unknown event type</Show>
       </Card>
     </Show>
   );

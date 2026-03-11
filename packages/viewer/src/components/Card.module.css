@@ -22,5 +22,5 @@
   font-size: var(--text-md);
   font-weight: 600;
   background: color-mix(in oklab, var(--color-card-bg) 98%, #fff);
-  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 2);
 }

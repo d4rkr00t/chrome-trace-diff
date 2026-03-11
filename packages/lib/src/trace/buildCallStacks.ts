@@ -35,8 +35,9 @@ function compileProfileData(
 
   for (const event of traceEvents) {
     if (event.name === "Profile") {
-      if (!(event.id in profileData)) {
-        profileData[event.id] = {
+      const id = `${event.id}|${event.pid}`;
+      if (!(id in profileData)) {
+        profileData[id] = {
           pid: event.pid,
           tid: event.tid,
           ts: event.ts,

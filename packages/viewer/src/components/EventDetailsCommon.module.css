@@ -1,0 +1,11 @@
+.event-details__common {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  font-size: var(--text-xs);
+}
+
+.event-details__common-table-header {
+  color: var(--color-trace-other);
+  font-size: var(--text-xs);
+}

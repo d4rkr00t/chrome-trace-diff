@@ -50,6 +50,7 @@ export function filterTraceEvents(
       continue;
     }
 
+    // TODO: figure this out a better way to find main PID
     if (evt.pid !== mainThreadPID) {
       continue;
     }
