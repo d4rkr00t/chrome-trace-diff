@@ -6,10 +6,8 @@ import { DiffViewerStoreContext } from "~/context/DiffViewerStoreContext";
 
 import { Card } from "~/components/Card";
 import { EventDetailsCommon } from "~/components/EventDetailsCommon";
-import { EventDetailsLayout } from "~/components/EventDetailsLayout";
 
 import styles from "./EventDetails.module.css";
-import { EventDetailsEvaluateScript } from "./EventDetailsEvaluateScript";
 
 export function EventDetails() {
   const diffViewerStore = useContext(DiffViewerStoreContext);
