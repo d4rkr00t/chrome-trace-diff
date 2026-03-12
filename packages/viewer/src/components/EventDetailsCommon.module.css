@@ -3,9 +3,16 @@
   flex-direction: column;
   gap: var(--spacing);
   font-size: var(--text-xs);
+  padding: var(--spacing);
 }
 
 .event-details__common-table-header {
   color: var(--color-trace-other);
   font-size: var(--text-xs);
+}
+
+.event-details__args-json {
+  padding: calc(var(--spacing) * 2);
+  background: var(--background);
+  border-radius: var(--border-radius-sm);
 }
