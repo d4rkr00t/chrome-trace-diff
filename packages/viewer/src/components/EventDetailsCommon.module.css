@@ -22,4 +22,6 @@
   border-radius: var(--border-radius-sm);
   margin: 0;
   color: var(--color-trace-other);
+  max-height: 300px;
+  overflow: scroll;
 }
