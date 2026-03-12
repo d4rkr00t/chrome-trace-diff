@@ -11,8 +11,15 @@
   font-size: var(--text-xs);
 }
 
+.event-details__args-heading {
+  font-size: var(--text-xs);
+  margin: 0;
+}
+
 .event-details__args-json {
   padding: calc(var(--spacing) * 2);
   background: var(--background);
   border-radius: var(--border-radius-sm);
+  margin: 0;
+  color: var(--color-trace-other);
 }

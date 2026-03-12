@@ -72,6 +72,7 @@ export function EventDetailsCommon(props: {
       </table>
 
       <Show when={props.beforeEvent?.originalEvents[0].args}>
+        <h3 class={styles["event-details__args-heading"]}>ARGS</h3>
         <pre class={styles["event-details__args-json"]}>
           {JSON.stringify(
             props.beforeEvent?.originalEvents[0].args ?? {},
