@@ -14,18 +14,24 @@ export function EventDetailsCommon(props: {
   beforeEvent: ProcessedTraceEvent | null;
 }) {
   const [totalDurationDiff, setTotalDurationDiff] = createSignal(0);
+  const [countDiff, setCountDiff] = createSignal(0);
 
   effect(() => {
     setTotalDurationDiff(
       durToMs(props.afterEvent?.totalDuration) -
         durToMs(props.beforeEvent?.totalDuration),
     );
+
+    setCountDiff(
+      (props.afterEvent?.originalEvents.length ?? 0) -
+        (props.beforeEvent?.originalEvents.length ?? 0),
+    );
   });
 
   return (
-    <>
-      <div class={styles["event-details__common"]}>
-        <table>
+    <div class={styles["event-details__common"]}>
+      <table>
+        <tbody>
           <tr>
             <td>
               <h3 class={styles["event-details__common-table-header"]}>
@@ -57,24 +63,13 @@ export function EventDetailsCommon(props: {
             <td>
               {props.beforeEvent?.originalEvents.length} →{" "}
               {props.afterEvent?.originalEvents.length}{" "}
-              <Show
-                when={
-                  (props.afterEvent?.originalEvents.length ?? 0) -
-                    (props.beforeEvent?.originalEvents.length ?? 0) !==
-                  0
-                }
-              >
-                <NumberDiffLozenge
-                  value={
-                    (props.afterEvent?.originalEvents.length ?? 0) -
-                    (props.beforeEvent?.originalEvents.length ?? 0)
-                  }
-                />
+              <Show when={countDiff() !== 0}>
+                <NumberDiffLozenge value={countDiff()} />
               </Show>
             </td>
           </tr>
-        </table>
-      </div>
+        </tbody>
+      </table>
 
       <Show when={props.beforeEvent?.originalEvents[0].args}>
         <pre>
@@ -85,6 +80,6 @@ export function EventDetailsCommon(props: {
           )}
         </pre>
       </Show>
-    </>
+    </div>
   );
 }

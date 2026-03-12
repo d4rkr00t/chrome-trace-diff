@@ -1,3 +1,3 @@
 export function durToMs(dur: number | undefined): number {
-  return dur ? dur / 1000 : 0;
+  return dur ? Math.ceil(dur / 1000) : 0;
 }
