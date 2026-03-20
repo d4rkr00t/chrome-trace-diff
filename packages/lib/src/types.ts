@@ -1,6 +1,7 @@
 import type {
   ChromeTraceEvent,
   ChromeTraceEventProfileDataNode,
+  ChromeTraceEventCallFrame,
 } from "./ChromeTrace.ts";
 
 export type Diff = {
@@ -26,6 +27,17 @@ export type TimelineEntry = {
   lanes: Array<Array<ChromeTraceEventWithStack>>;
 };
 
+export type FlameGraph = Record<string, FlameGraphEntry>;
+export type FlameGraphEntry = {
+  children: Set<number>;
+  totalDur: number;
+  callFrame: ChromeTraceEventCallFrame | null;
+};
+export type SerializableFlameGraph = Record<
+  string,
+  Omit<FlameGraphEntry, "children"> & { children: Array<number> }
+>;
+
 export type ProcessedTraceEventsMap = Record<string, ProcessedTraceEvent>;
 
 export type ProcessedTraceEventCounter = Record<
@@ -40,7 +52,7 @@ export type ProcessedTraceEventCounter = Record<
 export type ProcessedTraceEvent = {
   id: string;
   name: string;
-  originalEvents: ChromeTraceEvent[];
+  originalEvents: ChromeTraceEventWithStack[];
   callStacks: ProcessedTraceEventCallStack[];
   totalDuration: number;
 };

@@ -183,15 +183,17 @@ export type ChromeTraceEventProfile = ChromeTraceEventCommon & {
   id: string;
 };
 
+export type ChromeTraceEventCallFrame = {
+  codeType: string;
+  columnNumber: number;
+  functionName: string;
+  lineNumber: number;
+  scriptId: number;
+  url: string;
+};
+
 export type ChromeTraceEventProfileDataNode = {
-  callFrame: {
-    codeType: string;
-    columnNumber: number;
-    functionName: string;
-    lineNumber: number;
-    scriptId: number;
-    url: string;
-  };
+  callFrame: ChromeTraceEventCallFrame;
   id: number;
   parent: number;
 };

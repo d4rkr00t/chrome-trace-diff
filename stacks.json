@@ -1,0 +1,1621 @@
+{
+  "id": "546534",
+  "name": "FunctionCall",
+  "originalEvents": [
+    {
+      "args": {
+        "data": {
+          "columnNumber": 13387,
+          "functionName": "O",
+          "isolate": "3698501225051404895",
+          "lineNumber": 2,
+          "sampleTraceId": 2044053812814951,
+          "scriptId": "4",
+          "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+        }
+      },
+      "cat": "devtools.timeline",
+      "dur": 762,
+      "name": "FunctionCall",
+      "ph": "X",
+      "pid": 5447,
+      "tdur": 736,
+      "tid": 8669207,
+      "ts": 542569009960,
+      "tts": 3945,
+      "stack": {
+        "total": 872,
+        "stackFrames": [
+          [
+            148,
+            [
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 13386,
+                  "functionName": "O",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 5,
+                "parent": 1
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 12392,
+                  "functionName": "AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 6,
+                "parent": 5
+              }
+            ]
+          ],
+          [
+            142,
+            [
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 13386,
+                  "functionName": "O",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 5,
+                "parent": 1
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 12392,
+                  "functionName": "AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 6,
+                "parent": 5
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 7522,
+                  "functionName": "alive_session_AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 7,
+                "parent": 6
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 11719,
+                  "functionName": "connect",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 8,
+                "parent": 7
+              }
+            ]
+          ],
+          [
+            146,
+            [
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 13386,
+                  "functionName": "O",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 5,
+                "parent": 1
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 12392,
+                  "functionName": "AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 6,
+                "parent": 5
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 7522,
+                  "functionName": "alive_session_AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 7,
+                "parent": 6
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 11719,
+                  "functionName": "connect",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 8,
+                "parent": 7
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 4201,
+                  "functionName": "open",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 9,
+                "parent": 8
+              }
+            ]
+          ],
+          [
+            225,
+            [
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 13386,
+                  "functionName": "O",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 5,
+                "parent": 1
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 12392,
+                  "functionName": "AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 6,
+                "parent": 5
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 7522,
+                  "functionName": "alive_session_AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 7,
+                "parent": 6
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 11719,
+                  "functionName": "connect",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 8,
+                "parent": 7
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 4201,
+                  "functionName": "open",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 9,
+                "parent": 8
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 3281,
+                  "functionName": "d",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 10,
+                "parent": 9
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 4395,
+                  "functionName": "",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 11,
+                "parent": 10
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 3715,
+                  "functionName": "p",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 12,
+                "parent": 11
+              }
+            ]
+          ],
+          [
+            -93,
+            [
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 13386,
+                  "functionName": "O",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 5,
+                "parent": 1
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 12392,
+                  "functionName": "AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 6,
+                "parent": 5
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 7522,
+                  "functionName": "alive_session_AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 7,
+                "parent": 6
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 11719,
+                  "functionName": "connect",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 8,
+                "parent": 7
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 4201,
+                  "functionName": "open",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 9,
+                "parent": 8
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 3281,
+                  "functionName": "d",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 10,
+                "parent": 9
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 4395,
+                  "functionName": "",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 11,
+                "parent": 10
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 3715,
+                  "functionName": "p",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 12,
+                "parent": 11
+              }
+            ]
+          ],
+          [
+            138,
+            [
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 13386,
+                  "functionName": "O",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 5,
+                "parent": 1
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 12392,
+                  "functionName": "AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 6,
+                "parent": 5
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 7522,
+                  "functionName": "alive_session_AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 7,
+                "parent": 6
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 11719,
+                  "functionName": "connect",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 8,
+                "parent": 7
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 4201,
+                  "functionName": "open",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 9,
+                "parent": 8
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 3281,
+                  "functionName": "d",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 10,
+                "parent": 9
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 4395,
+                  "functionName": "",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 11,
+                "parent": 10
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 3715,
+                  "functionName": "p",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 12,
+                "parent": 11
+              }
+            ]
+          ],
+          [
+            70,
+            [
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 13386,
+                  "functionName": "O",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 5,
+                "parent": 1
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 12392,
+                  "functionName": "AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 6,
+                "parent": 5
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 7522,
+                  "functionName": "alive_session_AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 7,
+                "parent": 6
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 11719,
+                  "functionName": "connect",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 8,
+                "parent": 7
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 4201,
+                  "functionName": "open",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 9,
+                "parent": 8
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 3281,
+                  "functionName": "d",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 10,
+                "parent": 9
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 4395,
+                  "functionName": "",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 11,
+                "parent": 10
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 3715,
+                  "functionName": "p",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 12,
+                "parent": 11
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 2939,
+                  "functionName": "h",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 13,
+                "parent": 12
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 2965,
+                  "functionName": "",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 14,
+                "parent": 13
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "functionName": "setTimeout",
+                  "scriptId": 0
+                },
+                "id": 15,
+                "parent": 14
+              }
+            ]
+          ],
+          [
+            3,
+            [
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 13386,
+                  "functionName": "O",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 5,
+                "parent": 1
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 12392,
+                  "functionName": "AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 6,
+                "parent": 5
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 7522,
+                  "functionName": "alive_session_AliveSession",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 7,
+                "parent": 6
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 11719,
+                  "functionName": "connect",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 8,
+                "parent": 7
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 4201,
+                  "functionName": "open",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 9,
+                "parent": 8
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 3281,
+                  "functionName": "d",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 10,
+                "parent": 9
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 4395,
+                  "functionName": "",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 11,
+                "parent": 10
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 3715,
+                  "functionName": "p",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 12,
+                "parent": 11
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 2939,
+                  "functionName": "h",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 13,
+                "parent": 12
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 2965,
+                  "functionName": "",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 14,
+                "parent": 13
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "functionName": "setTimeout",
+                  "scriptId": 0
+                },
+                "id": 15,
+                "parent": 14
+              }
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "args": {
+        "data": {
+          "columnNumber": 13387,
+          "functionName": "O",
+          "isolate": "3698501225051404895",
+          "lineNumber": 2,
+          "sampleTraceId": 2044053812814969,
+          "scriptId": "4",
+          "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+        }
+      },
+      "cat": "devtools.timeline",
+      "dur": 223,
+      "name": "FunctionCall",
+      "ph": "X",
+      "pid": 5447,
+      "tdur": 207,
+      "tid": 8669207,
+      "ts": 542569010756,
+      "tts": 4701,
+      "stack": {
+        "total": 123,
+        "stackFrames": [
+          [
+            123,
+            [
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 13386,
+                  "functionName": "O",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 5,
+                "parent": 1
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 13517,
+                  "functionName": "",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 16,
+                "parent": 5
+              },
+              {
+                "callFrame": {
+                  "codeType": "JS",
+                  "columnNumber": 8153,
+                  "functionName": "subscribe",
+                  "lineNumber": 1,
+                  "scriptId": 4,
+                  "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+                },
+                "id": 17,
+                "parent": 16
+              }
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "args": {
+        "data": {
+          "columnNumber": 13387,
+          "functionName": "O",
+          "isolate": "3698501225051404895",
+          "lineNumber": 2,
+          "sampleTraceId": 2044053812818697,
+          "scriptId": "4",
+          "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+        }
+      },
+      "cat": "devtools.timeline",
+      "dur": 58,
+      "name": "FunctionCall",
+      "ph": "X",
+      "pid": 5447,
+      "tdur": 57,
+      "tid": 8669207,
+      "ts": 542569543255,
+      "tts": 26395,
+      "stack": {
+        "total": 0,
+        "stackFrames": []
+      }
+    }
+  ],
+  "callStacks": [
+    {
+      "total": 872,
+      "stackFrames": [
+        [
+          148,
+          [
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 13386,
+                "functionName": "O",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 5,
+              "parent": 1
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 12392,
+                "functionName": "AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 6,
+              "parent": 5
+            }
+          ]
+        ],
+        [
+          142,
+          [
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 13386,
+                "functionName": "O",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 5,
+              "parent": 1
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 12392,
+                "functionName": "AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 6,
+              "parent": 5
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 7522,
+                "functionName": "alive_session_AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 7,
+              "parent": 6
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 11719,
+                "functionName": "connect",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 8,
+              "parent": 7
+            }
+          ]
+        ],
+        [
+          146,
+          [
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 13386,
+                "functionName": "O",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 5,
+              "parent": 1
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 12392,
+                "functionName": "AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 6,
+              "parent": 5
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 7522,
+                "functionName": "alive_session_AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 7,
+              "parent": 6
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 11719,
+                "functionName": "connect",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 8,
+              "parent": 7
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 4201,
+                "functionName": "open",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 9,
+              "parent": 8
+            }
+          ]
+        ],
+        [
+          225,
+          [
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 13386,
+                "functionName": "O",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 5,
+              "parent": 1
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 12392,
+                "functionName": "AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 6,
+              "parent": 5
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 7522,
+                "functionName": "alive_session_AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 7,
+              "parent": 6
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 11719,
+                "functionName": "connect",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 8,
+              "parent": 7
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 4201,
+                "functionName": "open",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 9,
+              "parent": 8
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 3281,
+                "functionName": "d",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 10,
+              "parent": 9
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 4395,
+                "functionName": "",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 11,
+              "parent": 10
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 3715,
+                "functionName": "p",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 12,
+              "parent": 11
+            }
+          ]
+        ],
+        [
+          -93,
+          [
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 13386,
+                "functionName": "O",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 5,
+              "parent": 1
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 12392,
+                "functionName": "AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 6,
+              "parent": 5
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 7522,
+                "functionName": "alive_session_AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 7,
+              "parent": 6
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 11719,
+                "functionName": "connect",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 8,
+              "parent": 7
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 4201,
+                "functionName": "open",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 9,
+              "parent": 8
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 3281,
+                "functionName": "d",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 10,
+              "parent": 9
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 4395,
+                "functionName": "",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 11,
+              "parent": 10
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 3715,
+                "functionName": "p",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 12,
+              "parent": 11
+            }
+          ]
+        ],
+        [
+          138,
+          [
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 13386,
+                "functionName": "O",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 5,
+              "parent": 1
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 12392,
+                "functionName": "AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 6,
+              "parent": 5
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 7522,
+                "functionName": "alive_session_AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 7,
+              "parent": 6
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 11719,
+                "functionName": "connect",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 8,
+              "parent": 7
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 4201,
+                "functionName": "open",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 9,
+              "parent": 8
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 3281,
+                "functionName": "d",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 10,
+              "parent": 9
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 4395,
+                "functionName": "",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 11,
+              "parent": 10
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 3715,
+                "functionName": "p",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 12,
+              "parent": 11
+            }
+          ]
+        ],
+        [
+          70,
+          [
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 13386,
+                "functionName": "O",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 5,
+              "parent": 1
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 12392,
+                "functionName": "AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 6,
+              "parent": 5
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 7522,
+                "functionName": "alive_session_AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 7,
+              "parent": 6
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 11719,
+                "functionName": "connect",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 8,
+              "parent": 7
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 4201,
+                "functionName": "open",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 9,
+              "parent": 8
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 3281,
+                "functionName": "d",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 10,
+              "parent": 9
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 4395,
+                "functionName": "",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 11,
+              "parent": 10
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 3715,
+                "functionName": "p",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 12,
+              "parent": 11
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 2939,
+                "functionName": "h",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 13,
+              "parent": 12
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 2965,
+                "functionName": "",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 14,
+              "parent": 13
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "functionName": "setTimeout",
+                "scriptId": 0
+              },
+              "id": 15,
+              "parent": 14
+            }
+          ]
+        ],
+        [
+          3,
+          [
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 13386,
+                "functionName": "O",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 5,
+              "parent": 1
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 12392,
+                "functionName": "AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 6,
+              "parent": 5
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 7522,
+                "functionName": "alive_session_AliveSession",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 7,
+              "parent": 6
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 11719,
+                "functionName": "connect",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 8,
+              "parent": 7
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 4201,
+                "functionName": "open",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 9,
+              "parent": 8
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 3281,
+                "functionName": "d",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 10,
+              "parent": 9
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 4395,
+                "functionName": "",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 11,
+              "parent": 10
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 3715,
+                "functionName": "p",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 12,
+              "parent": 11
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 2939,
+                "functionName": "h",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 13,
+              "parent": 12
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 2965,
+                "functionName": "",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 14,
+              "parent": 13
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "functionName": "setTimeout",
+                "scriptId": 0
+              },
+              "id": 15,
+              "parent": 14
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "total": 123,
+      "stackFrames": [
+        [
+          123,
+          [
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 13386,
+                "functionName": "O",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 5,
+              "parent": 1
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 13517,
+                "functionName": "",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 16,
+              "parent": 5
+            },
+            {
+              "callFrame": {
+                "codeType": "JS",
+                "columnNumber": 8153,
+                "functionName": "subscribe",
+                "lineNumber": 1,
+                "scriptId": 4,
+                "url": "https://github.githubassets.com/assets/socket-worker-2a038060e454.js"
+              },
+              "id": 17,
+              "parent": 16
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "total": 0,
+      "stackFrames": []
+    }
+  ],
+  "totalDuration": 1043
+}

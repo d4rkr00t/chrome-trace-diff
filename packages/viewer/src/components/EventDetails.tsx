@@ -8,6 +8,7 @@ import { Card } from "~/components/Card";
 import { EventDetailsCommon } from "~/components/EventDetailsCommon";
 
 import styles from "./EventDetails.module.css";
+import { EventFlameGraph } from "./EventFlameGraph";
 
 export function EventDetails() {
   const diffViewerStore = useContext(DiffViewerStoreContext);
@@ -30,7 +31,7 @@ export function EventDetails() {
         diffViewerStore.state.selectedChromeEventId!
       ];
     setAfterEvent(processedTraceEventAfter);
-    console.log(processedTraceEventAfter);
+    console.log(processedTraceEventBefore?.callStacks);
 
     setEventType(
       processedTraceEventBefore?.name ?? processedTraceEventAfter?.name,
@@ -48,6 +49,10 @@ export function EventDetails() {
           beforeEvent={beforeEvent()}
           afterEvent={afterEvent()}
         />
+
+        <Show when={beforeEvent()?.callStacks.length}>
+          <EventFlameGraph event={beforeEvent()!} />
+        </Show>
       </Card>
     </Show>
   );
