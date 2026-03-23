@@ -1,4 +1,4 @@
-import { createMemo, Show } from "solid-js";
+import { createMemo, Show, type JSX } from "solid-js";
 
 import {
   buildFlameGraph,
@@ -6,16 +6,26 @@ import {
   SerializableFlameGraph,
 } from "@chrome-trace-diff/lib/src";
 
+import { Card } from "~/components/Card";
+
 import styles from "./EventFlameGraph.module.css";
 
-export function EventFlameGraph(props: { event: ProcessedTraceEvent }) {
+export function EventFlameGraph(props: {
+  event: ProcessedTraceEvent;
+  title: JSX.Element;
+}) {
   const flameGraph = createMemo(() => {
     return buildFlameGraph(props.event);
   });
 
   return (
     <Show when={flameGraph !== null}>
-      <EventFlameGraphLane flameGraph={flameGraph()!} id={1} parentDur={0} />
+      <div class={styles["event-flame-graph"]}>
+        <div class={styles["event-flame-graph__title"]}>
+          <Card>{props.title}</Card>
+        </div>
+        <EventFlameGraphLane flameGraph={flameGraph()!} id={1} parentDur={0} />
+      </div>
     </Show>
   );
 }
@@ -43,13 +53,20 @@ function EventFlameGraphLane(props: {
   });
 
   const selfTimePercentage = createMemo(() => {
-    console.log(getEntry().totalDur, selfTime());
     return Math.floor((selfTime() / getEntry().totalDur) * 100);
   });
 
   const getTintColor = () => {
+    console.log(
+      "Tint Color",
+      getCallFrame()?.functionName,
+      selfTimePercentage(),
+      Math.floor(selfTimePercentage() / 10) * 10,
+      selfTime(),
+      getEntry().totalDur,
+    );
     const tint =
-      styles[`--tint-${Math.floor(selfTimePercentage() / 100) * 100}`];
+      styles[`--tint-${Math.floor(selfTimePercentage() / 10) * 10}`];
     return tint;
   };
 
@@ -62,16 +79,14 @@ function EventFlameGraphLane(props: {
         width: getWidth(),
       }}
     >
-      <Show when={getCallFrame()?.functionName}>
-        <div
-          classList={{
-            [styles["event-flame-graph__event-title"]]: true,
-            [getTintColor()]: true,
-          }}
-        >
-          {getCallFrame()?.functionName} ({getDurInMs()}ms)
-        </div>
-      </Show>
+      <div
+        classList={{
+          [styles["event-flame-graph__event-title"]]: true,
+          [getTintColor()]: true,
+        }}
+      >
+        {getCallFrame()?.functionName || "anonymous"} ({getDurInMs()}ms)
+      </div>
       <div class={styles["event-flame-graph__event-lane"]}>
         {getEntry().children.map((child) => {
           return (

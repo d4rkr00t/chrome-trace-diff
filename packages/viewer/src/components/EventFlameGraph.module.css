@@ -1,10 +1,17 @@
 .event-flame-graph {
+  padding: calc(var(--spacing) * 1);
+}
+
+.event-flame-graph__title {
+  margin-bottom: calc(var(--spacing) * 2);
 }
 
 .event-flame-graph__event {
   display: flex;
   flex-direction: column;
   width: 100%;
+  overflow: hidden;
+  background: var(--background);
 }
 
 .event-flame-graph__event-lane {

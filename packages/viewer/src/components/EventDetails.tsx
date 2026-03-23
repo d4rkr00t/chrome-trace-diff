@@ -5,10 +5,11 @@ import { effect } from "solid-js/web";
 import { DiffViewerStoreContext } from "~/context/DiffViewerStoreContext";
 
 import { Card } from "~/components/Card";
+import { Lozenge } from "~/components/Lozenge";
 import { EventDetailsCommon } from "~/components/EventDetailsCommon";
+import { EventFlameGraph } from "~/components/EventFlameGraph";
 
 import styles from "./EventDetails.module.css";
-import { EventFlameGraph } from "./EventFlameGraph";
 
 export function EventDetails() {
   const diffViewerStore = useContext(DiffViewerStoreContext);
@@ -51,7 +52,21 @@ export function EventDetails() {
         />
 
         <Show when={beforeEvent()?.callStacks.length}>
-          <EventFlameGraph event={beforeEvent()!} />
+          <div class={styles["event-details__flame-graph"]}>
+            <EventFlameGraph
+              title={<Lozenge color="green">Before</Lozenge>}
+              event={beforeEvent()!}
+            />
+          </div>
+        </Show>
+
+        <Show when={afterEvent()?.callStacks.length}>
+          <div class={styles["event-details__flame-graph"]}>
+            <EventFlameGraph
+              title={<Lozenge color="orange">After</Lozenge>}
+              event={afterEvent()!}
+            />
+          </div>
         </Show>
       </Card>
     </Show>

@@ -1,2 +1,7 @@
 .event-details {
 }
+
+.event-details__flame-graph {
+  padding: calc(var(--spacing) * 1);
+  margin-bottom: calc(var(--spacing) * 1);
+}
