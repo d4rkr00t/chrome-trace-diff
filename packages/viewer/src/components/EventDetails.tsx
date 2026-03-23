@@ -32,7 +32,6 @@ export function EventDetails() {
         diffViewerStore.state.selectedChromeEventId!
       ];
     setAfterEvent(processedTraceEventAfter);
-    console.log(processedTraceEventBefore?.callStacks);
 
     setEventType(
       processedTraceEventBefore?.name ?? processedTraceEventAfter?.name,

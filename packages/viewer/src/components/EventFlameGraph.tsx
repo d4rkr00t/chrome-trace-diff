@@ -57,14 +57,6 @@ function EventFlameGraphLane(props: {
   });
 
   const getTintColor = () => {
-    console.log(
-      "Tint Color",
-      getCallFrame()?.functionName,
-      selfTimePercentage(),
-      Math.floor(selfTimePercentage() / 10) * 10,
-      selfTime(),
-      getEntry().totalDur,
-    );
     const tint =
       styles[`--tint-${Math.floor(selfTimePercentage() / 10) * 10}`];
     return tint;
