@@ -46,7 +46,7 @@ function EventFlameGraphLane(props: {
 
   const getEntry = () => props.flameGraph[props.id];
   const getCallFrame = () => getEntry().callFrame?.callFrame;
-  const getDurInMs = () => getEntry().totalDur / 1000;
+  const getDurInMs = () => getEntry().totalDur.toPrecision(4);
 
   const selfTime = createMemo(() => {
     const entry = getEntry();

@@ -48,7 +48,7 @@ export function buildFlameGraph(
 
   // Get total time of the first child
   serializableFlameGraph[1].totalDur =
-    serializableFlameGraph[serializableFlameGraph[1]?.children[0]].totalDur ??
+    serializableFlameGraph[serializableFlameGraph[1]?.children[0]]?.totalDur ??
     0;
 
   return serializableFlameGraph;

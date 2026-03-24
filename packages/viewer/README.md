@@ -1,3 +1,4 @@
 # TODO
 
-- [] Pass original event from timeline to diff store
+- [] Fix negative timings in flame graph
+- [] Diff Flame Graphs

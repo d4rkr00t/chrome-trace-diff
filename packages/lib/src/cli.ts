@@ -13,16 +13,16 @@ const afterTracePath = "./example-traces/github-trace-2.json";
 // const afterTracePath = "./example-traces/local_cache_on_no_iframe.json";
 
 function main() {
-  // const traceBefore = JSON.parse(fs.readFileSync(beforeTracePath, "utf8"));
-  // const traceBeforeResult = processTrace(traceBefore);
-  // const traceAfter = JSON.parse(fs.readFileSync(afterTracePath, "utf8"));
-  // const traceAfterResult = processTrace(traceAfter);
-  //
-  // const diff = diffTraces(traceBeforeResult, traceAfterResult);
-  // fs.writeFileSync("./diff.json", JSON.stringify(diff, null, 2), "utf8");
+  const traceBefore = JSON.parse(fs.readFileSync(beforeTracePath, "utf8"));
+  const traceBeforeResult = processTrace(traceBefore);
+  const traceAfter = JSON.parse(fs.readFileSync(afterTracePath, "utf8"));
+  const traceAfterResult = processTrace(traceAfter);
 
-  const stacksJson = JSON.parse(fs.readFileSync("./stacks.json", "utf8"));
-  console.log(buildFlameGraph(stacksJson));
+  const diff = diffTraces(traceBeforeResult, traceAfterResult);
+  fs.writeFileSync("./diff.json", JSON.stringify(diff, null, 2), "utf8");
+
+  // const stacksJson = JSON.parse(fs.readFileSync("./stacks.json", "utf8"));
+  // console.log(buildFlameGraph(stacksJson));
 }
 
 main();

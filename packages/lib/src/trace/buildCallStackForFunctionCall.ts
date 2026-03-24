@@ -46,7 +46,7 @@ export function buildCallStackForFunctionCall(
       }
 
       return [
-        profile.timeDeltas[idx] ?? 0 / 1000, // -> ms
+        Math.max(profile.timeDeltas[idx] ?? 0, 0) / 1000, // -> ms
         stack,
       ] as [number, ChromeTraceEventProfileDataNode[]];
     })
