@@ -40,7 +40,7 @@
 .--tint-10 {
   background: color-mix(
     in oklab,
-    var(--color-trace-scripting) 90%,
+    var(--color-trace-scripting) 80%,
     var(--color-red)
   );
 }
@@ -48,7 +48,7 @@
 .--tint-20 {
   background: color-mix(
     in oklab,
-    var(--color-trace-scripting) 80%,
+    var(--color-trace-scripting) 70%,
     var(--color-red)
   );
 }
@@ -56,7 +56,7 @@
 .--tint-30 {
   background: color-mix(
     in oklab,
-    var(--color-trace-scripting) 70%,
+    var(--color-trace-scripting) 60%,
     var(--color-red)
   );
 }
@@ -64,7 +64,7 @@
 .--tint-40 {
   background: color-mix(
     in oklab,
-    var(--color-trace-scripting) 60%,
+    var(--color-trace-scripting) 50%,
     var(--color-red)
   );
 }
@@ -72,7 +72,7 @@
 .--tint-50 {
   background: color-mix(
     in oklab,
-    var(--color-trace-scripting) 50%,
+    var(--color-trace-scripting) 40%,
     var(--color-red)
   );
 }
@@ -80,7 +80,7 @@
 .--tint-60 {
   background: color-mix(
     in oklab,
-    var(--color-trace-scripting) 40%,
+    var(--color-trace-scripting) 30%,
     var(--color-red)
   );
 }
@@ -88,7 +88,7 @@
 .--tint-70 {
   background: color-mix(
     in oklab,
-    var(--color-trace-scripting) 35%,
+    var(--color-trace-scripting) 25%,
     var(--color-red)
   );
 }
@@ -96,7 +96,7 @@
 .--tint-80 {
   background: color-mix(
     in oklab,
-    var(--color-trace-scripting) 30%,
+    var(--color-trace-scripting) 20%,
     var(--color-red)
   );
 }
@@ -104,7 +104,7 @@
 .--tint-90 {
   background: color-mix(
     in oklab,
-    var(--color-trace-scripting) 20%,
+    var(--color-trace-scripting) 15%,
     var(--color-red)
   );
 }

@@ -24,7 +24,12 @@ export function EventFlameGraph(props: {
         <div class={styles["event-flame-graph__title"]}>
           <Card>{props.title}</Card>
         </div>
-        <EventFlameGraphLane flameGraph={flameGraph()!} id={1} parentDur={0} />
+        <EventFlameGraphLane
+          flameGraph={flameGraph()!}
+          id={1}
+          parentDur={flameGraph()?.[1].totalDur ?? 0}
+          totalDur={flameGraph()?.[1].totalDur ?? 0}
+        />
       </div>
     </Show>
   );
@@ -34,6 +39,7 @@ function EventFlameGraphLane(props: {
   flameGraph: SerializableFlameGraph;
   id: number;
   parentDur: number;
+  totalDur: number;
 }) {
   const getWidth = () =>
     `${Math.floor((props.flameGraph[props.id].totalDur / props.parentDur) * 100)}%`;
@@ -53,12 +59,11 @@ function EventFlameGraphLane(props: {
   });
 
   const selfTimePercentage = createMemo(() => {
-    return Math.floor((selfTime() / getEntry().totalDur) * 100);
+    return Math.floor((selfTime() / props.totalDur) * 100);
   });
 
   const getTintColor = () => {
-    const tint =
-      styles[`--tint-${Math.floor(selfTimePercentage() / 10) * 10}`];
+    const tint = styles[`--tint-${Math.floor(selfTimePercentage() / 10) * 10}`];
     return tint;
   };
 
@@ -71,14 +76,16 @@ function EventFlameGraphLane(props: {
         width: getWidth(),
       }}
     >
-      <div
-        classList={{
-          [styles["event-flame-graph__event-title"]]: true,
-          [getTintColor()]: true,
-        }}
-      >
-        {getCallFrame()?.functionName || "anonymous"} ({getDurInMs()}ms)
-      </div>
+      <Show when={props.id !== 1}>
+        <div
+          classList={{
+            [styles["event-flame-graph__event-title"]]: true,
+            [getTintColor()]: true,
+          }}
+        >
+          {getCallFrame()?.functionName || "anonymous"} ({getDurInMs()}ms)
+        </div>
+      </Show>
       <div class={styles["event-flame-graph__event-lane"]}>
         {getEntry().children.map((child) => {
           return (
@@ -86,6 +93,7 @@ function EventFlameGraphLane(props: {
               flameGraph={props.flameGraph}
               id={child}
               parentDur={getEntry().totalDur}
+              totalDur={props.totalDur}
             />
           );
         })}
