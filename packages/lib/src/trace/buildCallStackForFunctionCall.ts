@@ -20,7 +20,7 @@ export function buildCallStackForFunctionCall(
 
   const profile = profileData[profileId];
 
-  const samplesIndexes = [];
+  const samplesIndexes: number[] = [];
 
   const fStart = evt.ts;
   const fEnd = fStart + evt.dur;
@@ -37,7 +37,7 @@ export function buildCallStackForFunctionCall(
   // console.log(samplesIndexes.map((idx) => profile.samples[idx]));
 
   const stack = samplesIndexes
-    .map((idx) => {
+    .map((idx, i) => {
       const nodeIdx = profile.samples[idx]!;
       const stack = getStack(profile.nodes, profile.nodes[nodeIdx - 1]!, evt);
 
@@ -45,16 +45,25 @@ export function buildCallStackForFunctionCall(
         return null;
       }
 
-      return [
-        Math.max(profile.timeDeltas[idx] ?? 0, 0) / 1000, // -> ms
-        stack,
-      ] as [number, ChromeTraceEventProfileDataNode[]];
+      // Compute sample duration from absolute timestamps rather than raw
+      // timeDeltas. timeDeltas can be negative due to clock drift / NTP
+      // adjustments, which would otherwise discard timing information.
+      // For each sample we measure the gap until the next boundary:
+      //   - next sample's absolute timestamp, or
+      //   - the function call's end timestamp for the last sample.
+      const nextBoundary =
+        i < samplesIndexes.length - 1
+          ? (profile.timeAbs[samplesIndexes[i + 1]!] ?? fEnd)
+          : fEnd;
+      const duration = Math.max(nextBoundary - (profile.timeAbs[idx] ?? 0), 0) / 1000; // -> ms
+
+      return [duration, stack] as [number, ChromeTraceEventProfileDataNode[]];
     })
     .reduce<ProcessedTraceEventCallStack>(
       (acc, item) => {
         if (!item) return acc;
 
-        acc.total += Math.max(item[0], 0);
+        acc.total += item[0];
         acc.stackFrames.push(item);
 
         return acc;
