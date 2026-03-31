@@ -1,0 +1,130 @@
+.event-flame-graph {
+  padding: calc(var(--spacing) * 1);
+}
+
+.event-flame-graph__title {
+  margin-bottom: calc(var(--spacing) * 2);
+}
+
+.event-flame-graph__event {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  background: var(--background);
+}
+
+.event-flame-graph__event-lane {
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+}
+
+.event-flame-graph__event-title {
+  color: black;
+  background-color: var(--color-trace-scripting);
+  font-size: var(--text-xs);
+  margin-bottom: 1px;
+  overflow: hidden;
+  height: calc(1rem + 1px);
+}
+
+.event-flame-graph__event-title.--unique {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 0, 0, 0.7) 2px,
+    rgba(255, 0, 0, 0.7) 4px
+  );
+  outline: 2px solid var(--color-destructive-foreground);
+  outline-offset: -1px;
+}
+
+.--tint-0 {
+  background: color-mix(
+    in oklab,
+    var(--color-trace-scripting) 100%,
+    var(--color-red)
+  );
+}
+
+.--tint-10 {
+  background: color-mix(
+    in oklab,
+    var(--color-trace-scripting) 80%,
+    var(--color-red)
+  );
+}
+
+.--tint-20 {
+  background: color-mix(
+    in oklab,
+    var(--color-trace-scripting) 70%,
+    var(--color-red)
+  );
+}
+
+.--tint-30 {
+  background: color-mix(
+    in oklab,
+    var(--color-trace-scripting) 60%,
+    var(--color-red)
+  );
+}
+
+.--tint-40 {
+  background: color-mix(
+    in oklab,
+    var(--color-trace-scripting) 50%,
+    var(--color-red)
+  );
+}
+
+.--tint-50 {
+  background: color-mix(
+    in oklab,
+    var(--color-trace-scripting) 40%,
+    var(--color-red)
+  );
+}
+
+.--tint-60 {
+  background: color-mix(
+    in oklab,
+    var(--color-trace-scripting) 30%,
+    var(--color-red)
+  );
+}
+
+.--tint-70 {
+  background: color-mix(
+    in oklab,
+    var(--color-trace-scripting) 25%,
+    var(--color-red)
+  );
+}
+
+.--tint-80 {
+  background: color-mix(
+    in oklab,
+    var(--color-trace-scripting) 20%,
+    var(--color-red)
+  );
+}
+
+.--tint-90 {
+  background: color-mix(
+    in oklab,
+    var(--color-trace-scripting) 15%,
+    var(--color-red)
+  );
+}
+
+.--tint-100 {
+  background: color-mix(
+    in oklab,
+    var(--color-trace-scripting) 10%,
+    var(--color-red)
+  );
+}

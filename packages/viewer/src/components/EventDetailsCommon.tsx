@@ -18,8 +18,10 @@ export function EventDetailsCommon(props: {
 
   effect(() => {
     setTotalDurationDiff(
-      durToMs(props.afterEvent?.totalDuration) -
-        durToMs(props.beforeEvent?.totalDuration),
+      durToMs(
+        (props.afterEvent?.totalDuration ?? 0) -
+          (props.beforeEvent?.totalDuration ?? 0),
+      ),
     );
 
     setCountDiff(
