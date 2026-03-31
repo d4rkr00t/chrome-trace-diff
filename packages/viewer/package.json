@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vinxi dev",
     "build": "vinxi build",
-    "start": "vinxi start"
+    "start": "vinxi start",
+    "test": "pnpm vitest --passWithNoTests"
   },
   "dependencies": {
     "@solidjs/router": "^0.15.4",

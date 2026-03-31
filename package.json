@@ -7,11 +7,14 @@
   "scripts": {
     "run:lib": "node ./packages/lib/src/cli.ts",
     "run:viewer": "pnpm --filter viewer run dev",
-    "lint:tsc": "pnpm -r run lint:tsc"
+    "lint:tsc": "pnpm -r run lint:tsc",
+    "test": "pnpm -r run test"
   },
   "keywords": [],
   "author": "Stanislav Sysoev <@d4rkr00t> <d4rkr00t@gmail.com>",
   "license": "MIT",
   "packageManager": "pnpm@10.20.0",
-  "dependencies": {}
+  "dependencies": {
+    "vitest": "^4.1.0"
+  }
 }

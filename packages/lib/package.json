@@ -6,8 +6,8 @@
   "main": "dist/index.js",
   "types": "./src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint:tsc": "tsc --noEmit"
+    "lint:tsc": "tsc --noEmit",
+    "test": "pnpm vitest --passWithNoTests"
   },
   "keywords": [],
   "author": "Stanislav Sysoev <@d4rkr00t> <d4rkr00t@gmail.com>",
