@@ -14,8 +14,13 @@ export function filterTraceEvents(
 
   let mainThreadPID = null;
   for (const evt of traceEvents) {
-    if (evt.args?.name === MAIN_THREAD_NAME) {
-      mainThreadPID = evt.pid;
+    if (evt.name === "TracingStartedInBrowser") {
+      for (const frame of evt.args?.data?.frames ?? []) {
+        if (frame.isInPrimaryMainFrame) {
+          mainThreadPID = parseInt(frame.processId);
+          break;
+        }
+      }
     }
   }
 
@@ -57,7 +62,7 @@ export function filterTraceEvents(
 
     const id = getUniqueEventKey(evt);
     if (!id) {
-      console.log(evt);
+      // console.log(evt);
       continue;
     }
 
