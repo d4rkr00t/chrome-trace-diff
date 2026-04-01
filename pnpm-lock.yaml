@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      json-stream-stringify:
+        specifier: ^3.1.6
+        version: 3.1.6
       vitest:
         specifier: ^4.1.0
         version: 4.1.0(@types/node@25.0.2)(vite@6.4.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1))
@@ -1729,6 +1732,10 @@ packages:
     resolution: {integrity: sha512-/sM3dO2FOzXjKQhJuo0Q173wf2KOo8t4I8vHy6lF9poUp7bKT0/NHE8fPX23PwfhnykfqnC2xRxOnVw5XuGIaA==, tarball: https://packages.atlassian.com/api/npm/npm-remote/jsesc/-/jsesc-3.1.0.tgz}
     engines: {node: '>=6'}
     hasBin: true
+
+  json-stream-stringify@3.1.6:
+    resolution: {integrity: sha512-x7fpwxOkbhFCaJDJ8vb1fBY3DdSa4AlITaz+HHILQJzdPMnHEFjxPwVUi1ALIbcIxDE0PNe/0i7frnY8QnBQog==, tarball: https://packages.atlassian.com/api/npm/npm-remote/json-stream-stringify/-/json-stream-stringify-3.1.6.tgz}
+    engines: {node: '>=7.10.1'}
 
   json5@2.2.3:
     resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==, tarball: https://packages.atlassian.com/api/npm/npm-remote/json5/-/json5-2.2.3.tgz}
@@ -4293,6 +4300,8 @@ snapshots:
   js-tokens@9.0.1: {}
 
   jsesc@3.1.0: {}
+
+  json-stream-stringify@3.1.6: {}
 
   json5@2.2.3: {}
 

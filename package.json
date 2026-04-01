@@ -15,6 +15,7 @@
   "license": "MIT",
   "packageManager": "pnpm@10.20.0",
   "dependencies": {
+    "json-stream-stringify": "^3.1.6",
     "vitest": "^4.1.0"
   }
 }

@@ -1,12 +1,15 @@
 import fs from "node:fs";
+
+import { JsonStreamStringify } from "json-stream-stringify";
+
 import { processTrace } from "./trace/processTrace.ts";
 import { diffTraces } from "./trace/diffTraces.ts";
 //
-// const beforeTracePath = "./example-traces/aifc-off.json";
-// const afterTracePath = "./example-traces/aifc-on.json";
+const beforeTracePath = "./example-traces/aifc-off.json";
+const afterTracePath = "./example-traces/aifc-on.json";
 
-const beforeTracePath = "./example-traces/github-trace-1.json";
-const afterTracePath = "./example-traces/github-trace-2.json";
+// const beforeTracePath = "./example-traces/github-trace-1.json";
+// const afterTracePath = "./example-traces/github-trace-2.json";
 
 // const beforeTracePath = "./example-traces/palette-trace-1.json";
 // const afterTracePath = "./example-traces/palette-trace-2.json";
@@ -21,7 +24,15 @@ function main() {
   const traceAfterResult = processTrace(traceAfter);
 
   const diff = diffTraces(traceBeforeResult, traceAfterResult);
-  fs.writeFileSync("./diff.json", JSON.stringify(diff, null, 2), "utf8");
+  // fs.writeFileSync("./diff.json", JSON.stringify(diff, null, 2), "utf8");
+
+  const writeStream = fs.createWriteStream("diff.json");
+  const jsonStream = new JsonStreamStringify(diff);
+
+  jsonStream
+    .pipe(writeStream)
+    .on("error", (err) => console.error("Write error:", err))
+    .on("finish", () => console.log("Done!"));
 }
 
 main();
